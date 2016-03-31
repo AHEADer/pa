@@ -24,7 +24,7 @@ typedef struct {
 	/* Do NOT change the order of the GPRs' definitions. */
 
 	uint32_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
-
+	uint16_t ax, cx, dx, bx, sp, bp, si, di;
 	swaddr_t eip;
 
 } CPU_state;
