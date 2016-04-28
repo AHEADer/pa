@@ -15,6 +15,7 @@ enum { R_AL, R_CL, R_DL, R_BL, R_AH, R_CH, R_DH, R_BH };
  */
 
 typedef struct {
+union{
 	struct {
 		uint32_t _32;
 		uint16_t _16;
@@ -22,9 +23,28 @@ typedef struct {
 	} gpr[8];
 
 	/* Do NOT change the order of the GPRs' definitions. */
-
-	uint32_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
-	uint16_t ax, cx, dx, bx, sp, bp, si, di;
+	struct 
+	{
+		uint32_t eax, ecx, edx, ebx, esp, ebp, esi, edi;	
+	};
+	
+	struct 
+	{
+		uint16_t ax, high_bits1, cx, high_bits2, dx, high_bits3, \
+		bx, high_bits4, sp, high_bits5, bp, high_bits6, si, high_bits7, di, high_bits8;	
+	};
+	struct
+	{
+		uint8_t al, ah;
+		uint16_t panding1;
+		uint8_t cl, ch;
+		uint16_t panding2;
+		uint8_t dl, dh;
+		uint16_t panding3;
+		uint8_t bl, bh;
+		uint16_t panding4;
+	};
+};
 	swaddr_t eip;
 
 } CPU_state;
