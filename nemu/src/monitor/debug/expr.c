@@ -40,7 +40,7 @@ void init_regex() {
 	int ret;
 
 	for(i = 0; i < NR_REGEX; i ++) {
-		ret = regcomp(&re[i], rules[i].regex, REG_EXTENDED);
+		ret = regcomp(&re[i], rules[i].regex, REG_EXTENDED);//Use Extended Regular Expressions.
 		if(ret != 0) {
 			regerror(ret, &re[i], error_msg, 128);
 			Assert(ret == 0, "regex compilation failed: %s\n%s", error_msg, rules[i].regex);
