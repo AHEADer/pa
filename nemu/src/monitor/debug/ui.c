@@ -46,7 +46,12 @@ static struct {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
-
+	{ "si[N]", "Execute next program line (after stopping);", cmd_q},
+	{ "info SUBCMD", "Generic command for showing things about the program being debugged", cmd_q},
+	{ "d N", "Delete some breakpoints or auto-display expressions", cmd_q},
+	{ "x N EXPR", "Print N 4bits from address starting with the value of EXPRESSION", cmd_q},
+	{ "w EXPR", "Add a watchpoint to watch the value of EXPR", cmd_q},
+	{ "bt", "Backtrace: display the program stack.", cmd_q},
 	/* TODO: Add more commands */
 
 };
