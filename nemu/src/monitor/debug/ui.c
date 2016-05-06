@@ -106,7 +106,10 @@ static int cmd_info(char *args)
 
 static int cmd_x(char *args)
 {
-	return -1;
+	//char *nstr = strtok(args, " ");
+    //char *expr = nstr + strlen(nstr) + 1;
+    //int i, n=atoi(nstr);
+	return 0;
 }
 
 void ui_mainloop() {
