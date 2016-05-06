@@ -9,7 +9,7 @@
 enum {
 	NOTYPE = 256, EQ,
 	MULDIV, ADDSUB,
-	REGISTER
+	REGISTER,LBRACKET,RBRACKET,INT
 	/* TODO: Add more token types */
 
 };
