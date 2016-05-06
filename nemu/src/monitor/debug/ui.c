@@ -36,6 +36,8 @@ static int cmd_q(char *args) {
 	return -1;
 }
 
+static int cmd_info(char *args);
+
 static int cmd_help(char *args);
 
 static struct {
@@ -47,7 +49,7 @@ static struct {
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
 	{ "si", "Execute next program line (after stopping);", cmd_q},
-	{ "info", "Generic command for showing things about the program being debugged", cmd_q},
+	{ "info", "Generic command for showing things about the program being debugged", cmd_info},
 	{ "d", "Delete some breakpoints or auto-display expressions", cmd_q},
 	{ "x", "Print N 4bits from address starting with the value of EXPRESSION", cmd_q},
 	{ "w", "Add a watchpoint to watch the value of EXPR", cmd_q},
@@ -79,6 +81,27 @@ static int cmd_help(char *args) {
 		printf("Unknown command '%s'\n", arg);
 	}
 	return 0;
+}
+
+static int cmd_info(char *args)
+{
+    if (args)
+        if (*args == 'r')
+        {
+            int i;
+            for (i=0; i<4; ++i)
+                printf("%s\t0x%x\t\t%d\n", regsl[i],  cpu.gpr[i]._32, cpu.gpr[i]._32);
+            for (i=4; i<8; ++i)
+                printf("%s\t0x%x\t\t0x%x\n", regsl[i],  cpu.gpr[i]._32, cpu.gpr[i]._32);
+            printf("eip\t0x%x\n", cpu.eip);
+        }
+        else
+        {
+            printf("Invalid argument\n");
+        }
+    else
+        printf("Need a argument\n");
+    return 0;
 }
 
 void ui_mainloop() {
