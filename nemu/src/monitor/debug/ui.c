@@ -37,7 +37,7 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_info(char *args);
-
+static int cmd_x(char *args);
 static int cmd_help(char *args);
 
 static struct {
@@ -51,7 +51,7 @@ static struct {
 	{ "si", "Execute next program line (after stopping);", cmd_q},
 	{ "info", "Generic command for showing things about the program being debugged", cmd_info},
 	{ "d", "Delete some breakpoints or auto-display expressions", cmd_q},
-	{ "x", "Print N 4bits from address starting with the value of EXPRESSION", cmd_q},
+	{ "x", "Print N 4bits from address starting with the value of EXPRESSION", cmd_x},
 	{ "w", "Add a watchpoint to watch the value of EXPR", cmd_q},
 	{ "bt", "Backtrace: display the program stack.", cmd_q},
 	/* TODO: Add more commands */
@@ -97,11 +97,16 @@ static int cmd_info(char *args)
         }
         else
         {
-            printf("Invalid argument\n");
+            printf("Invalid argument!\n");
         }
     else
-        printf("Need a argument\n");
+        printf("A argument is needed!\n");
     return 0;
+}
+
+static int cmd_x(char *args)
+{
+	return -1;
 }
 
 void ui_mainloop() {
