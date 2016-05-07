@@ -31,7 +31,7 @@ static struct rule {
 	{"\\*", MULDIV},
 	{"\\/", MULDIV},
 	{"\\$+[a-z]{2,3}",REGISTER },
-	{"d+{}", NUMBER},
+	{"d+{0x100000, 0x200000}", NUMBER},
 	{"==", EQ}						// equal
 };
 
