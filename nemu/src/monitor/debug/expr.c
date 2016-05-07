@@ -24,13 +24,12 @@ static struct rule {
 	 */
 
 	//{" +",	NOTYPE},				// spaces
-	{" ", SPACE},
-	//{"\\+", '+'},					// plus
+	{" +", SPACE},
 	{"\\+", ADDSUB},
 	{"\\-", ADDSUB},
 	{"\\*", MULDIV},
 	{"\\/", MULDIV},
-	{"\\$+[a-z]{1-3}",REGISTER },
+	{"[a-z]{1-3}",REGISTER },
 	{"==", EQ}						// equal
 };
 
