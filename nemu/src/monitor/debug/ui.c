@@ -123,11 +123,11 @@ static int cmd_x(char *args)
     			count++;
     		}
     	}
-    	else printf("only hex & dex is alloweds!\n");
+    	else printf("Only hex & dex is alloweds!\n");
     }
     if (strlen(expr)==0)
     {
-    	printf("args lack!\n");
+    	printf("Argument lacks!\n");
     }
 	return 0;
 }
