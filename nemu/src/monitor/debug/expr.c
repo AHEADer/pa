@@ -32,7 +32,7 @@ static struct rule {
 	{"\\/", MULDIV},
 	{"\\$+[a-z]{2,3}",REGISTER },
 	{"[0-9]{2,10}", DEX},
-	{"0+x+[0-9a-zA-Z]",HEX},
+	{"\b0[xX][0-9a-fA-F]+\b",HEX},
 	{"==", EQ}						// equal
 };
 
@@ -96,6 +96,8 @@ static bool make_token(char *e) {
 					case DEX:
 						printf("match dex\n");
 						break;
+					case HEX:
+						printf("match hex\n");
 					default: panic("something wrong!");
 				}
 
