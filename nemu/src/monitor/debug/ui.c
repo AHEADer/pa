@@ -129,6 +129,7 @@ static int cmd_x(char *args)
     {
     	printf("Argument lacks!\n");
     }
+    
 	return 0;
 }
 

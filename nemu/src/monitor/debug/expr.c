@@ -9,7 +9,7 @@
 enum {
 	NOTYPE = 256, EQ,
 	MULDIV, ADDSUB,
-	REGISTER,LBRACKET,RBRACKET,INT
+	REGISTER,LBRACKET,RBRACKET,INT,SPACE
 	/* TODO: Add more token types */
 
 };
@@ -23,8 +23,14 @@ static struct rule {
 	 * Pay attention to the precedence level of different rules.
 	 */
 
-	{" +",	NOTYPE},				// spaces
-	{"\\+", '+'},					// plus
+	//{" +",	NOTYPE},				// spaces
+	{" ", SPACE},
+	//{"\\+", '+'},					// plus
+	{"+", ADDSUB},
+	{"-", ADDSUB},
+	{"*", MULDIV},
+	{"/", MULDIV},
+	{"\\$[a-z]{1-3}",REGISTER },
 	{"==", EQ}						// equal
 };
 
@@ -42,7 +48,7 @@ void init_regex() {
 
 	for(i = 0; i < NR_REGEX; i ++) {
 		ret = regcomp(&re[i], rules[i].regex, REG_EXTENDED);//Use Extended Regular Expressions.
-		if(ret != 0) {
+		if(ret != 0) {		//init error
 			regerror(ret, &re[i], error_msg, 128);
 			Assert(ret == 0, "regex compilation failed: %s\n%s", error_msg, rules[i].regex);
 		}
