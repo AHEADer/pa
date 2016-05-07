@@ -1,0 +1,9 @@
+nemu debug:
+x command:
+x 10 $eip
+x 10 0x100000
+x 10 $eip+0x100
+x 10 ($eip+0x100)
+x 10 ($eip+.....)
+x 10 0x10000+...
+x 10 $eax*4+0x10000
