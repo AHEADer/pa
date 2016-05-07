@@ -90,7 +90,10 @@ static bool make_token(char *e) {
 					case SPACE:
 						break;
 					case REGISTER:
-						//printf("match\n");
+						printf("match register\n");
+						break;
+					case DEX:
+						printf("match dex\n");
 						break;
 					default: panic("something wrong!");
 				}
