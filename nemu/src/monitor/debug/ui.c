@@ -123,18 +123,24 @@ static int cmd_x(char *args)
     			count++;
     		}
     	}
-    	else printf("Only hex & dex is alloweds!\n");
+    	else{ 
+    		printf("Only hex & dex is alloweds!\n");
+    		return 0;
+    	}
     }
+    dex = atoi(nstr);
     if (strlen(expr)==0)
     {
     	printf("Argument lacks!\n");
     	return 0;
     }
     int mem = cal_str(expr);
+    printf("%08x:", mem);
     for (int i=0; i<dex; ++i)
     {
-        printf("test:\t0x%08x", swaddr_read(mem + i*4, 4));
+        printf("\t0x%08x", swaddr_read(mem + i*4, 4));
     }
+    printf("\n");
 	return 0;
 }
 
