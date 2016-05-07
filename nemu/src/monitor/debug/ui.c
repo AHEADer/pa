@@ -106,9 +106,29 @@ static int cmd_info(char *args)
 
 static int cmd_x(char *args)
 {
-	//char *nstr = strtok(args, " ");
-    //char *expr = nstr + strlen(nstr) + 1;
+	char *nstr = strtok(args, " ");
+    char *expr = nstr + strlen(nstr) + 1;
     //int i, n=atoi(nstr);
+    int dex = 0;
+    if (*nstr == '0' && strlen(nstr)!=1)
+    {
+    	if (*(nstr+1)=='x')	//hex
+    	{
+    		int hex = atoi(nstr+2);
+    		int count = 0;
+    		while(hex!=0)
+    		{
+    			dex += (hex%10)*16^count;
+    			hex = hex/10;
+    			count++;
+    		}
+    	}
+    	else printf("only hex & dex is alloweds!\n");
+    }
+    if (!expr)
+    {
+    	printf("args lack!\n");
+    }
 	return 0;
 }
 
