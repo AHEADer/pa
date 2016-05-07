@@ -133,7 +133,7 @@ static int cmd_x(char *args)
     int mem = cal_str(expr);
     for (int i=0; i<dex; ++i)
     {
-        printf("\t0x%08x", swaddr_read(mem + i*4, 4));
+        printf("test:\t0x%08x", swaddr_read(mem + i*4, 4));
     }
 	return 0;
 }
