@@ -112,3 +112,11 @@ uint32_t expr(char *e, bool *success) {
 	return 0;
 }
 
+int cal_str(char *s)
+{
+	if(!make_token(s)) {
+		//*success = false;
+		return 0;
+	}
+	return 0x10000;
+}
