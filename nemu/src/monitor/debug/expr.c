@@ -191,5 +191,5 @@ int cal_str(char *e)
 		}
 	}
 
-	return 0x100000;
+	return sum;
 }
