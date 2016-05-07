@@ -85,6 +85,11 @@ static bool make_token(char *e) {
 				 */
 
 				switch(rules[i].token_type) {
+					case SPACE:
+						break;
+					case REGISTER:
+						printf("%s\n",rules[i].regex );
+						break;
 					default: panic("please implement me");
 				}
 
