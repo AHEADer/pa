@@ -15,6 +15,7 @@ enum {
 
 };
 
+
 static struct rule {
 	char *regex;
 	int token_type;
@@ -117,6 +118,33 @@ uint32_t expr(char *e, bool *success) {
 
 int seach_register(char* reg)
 {
+	if (!strcmp(reg+1, "eip"))
+	{
+		return cpu.eip;
+	}
+	for(int i=0;i<8;i++)
+	{
+		if (!strcmp(reg+1, regsl[i]))
+		{
+			return cpu.gpr[i]._32;
+		}
+	}
+
+	for(int i=0;i<8;i++)
+	{
+		if (!strcmp(reg+1, regsw[i]))
+		{
+			return (int)cpu.gpr[i]._16;
+		}
+	}
+
+	for(int i=0;i<8;i++)
+	{
+		if (!strcmp(reg+1, regsb[i]))
+		{
+			return (int)cpu.gpr[i%4]._8[i/4];
+		}
+	}
 	return 0;
 }
 
@@ -137,12 +165,6 @@ int cal_str(char *e)
 
 				Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s", i, rules[i].regex, position, substr_len, substr_len, substr_start);
 				position += substr_len;
-
-				/* TODO: Now a new token is recognized with rules[i]. Add codes
-				 * to record the token in the array ``tokens''. For certain 
-				 * types of tokens, some extra actions should be performed.
-				 */
-
 				switch(rules[i].token_type) {
 					case SPACE:
 						break;
