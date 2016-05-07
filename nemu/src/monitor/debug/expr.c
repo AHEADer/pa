@@ -9,7 +9,8 @@
 enum {
 	NOTYPE = 256, EQ,
 	MULDIV, ADDSUB,
-	REGISTER,LBRACKET,RBRACKET,INT,SPACE
+	REGISTER,LBRACKET,RBRACKET,INT,SPACE,
+	NUMBER
 	/* TODO: Add more token types */
 
 };
@@ -30,6 +31,7 @@ static struct rule {
 	{"\\*", MULDIV},
 	{"\\/", MULDIV},
 	{"\\$+[a-z]{2,3}",REGISTER },
+	{"d+{}", NUMBER},
 	{"==", EQ}						// equal
 };
 
