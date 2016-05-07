@@ -135,7 +135,7 @@ static int cmd_x(char *args)
     	return 0;
     }
     int mem = cal_str(expr);
-    printf("0x%8x:", mem);
+    printf("0x%x:", mem);
     for (int i=0; i<dex; ++i)
     {
         printf("\t0x%08x", swaddr_read(mem + i*4, 4));
