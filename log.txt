@@ -1,1 +1,5 @@
-[nemu/src/monitor/debug/expr.c,82,make_token] match rules[7] = "0[xX][0-9a-fA-F]" at position 0 with len 3: 0xf
+[nemu/src/monitor/debug/expr.c,82,make_token] match rules[6] = "[0-9]" at position 0 with len 1: 1
+[nemu/src/monitor/debug/expr.c,82,make_token] match rules[6] = "[0-9]" at position 1 with len 1: 2
+[nemu/src/monitor/debug/expr.c,82,make_token] match rules[6] = "[0-9]" at position 2 with len 1: 3
+[nemu/src/monitor/debug/expr.c,82,make_token] match rules[6] = "[0-9]" at position 3 with len 1: 1
+[nemu/src/monitor/debug/expr.c,82,make_token] match rules[6] = "[0-9]" at position 4 with len 1: 2
