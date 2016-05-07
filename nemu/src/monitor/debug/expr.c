@@ -115,5 +115,5 @@ uint32_t expr(char *e, bool *success) {
 int cal_str(char *s)
 {
 	
-	return 0x10000;
+	return 0x100000;
 }
