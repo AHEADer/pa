@@ -88,9 +88,9 @@ static bool make_token(char *e) {
 					case SPACE:
 						break;
 					case REGISTER:
-						printf("%s\n",rules[i].regex );
+						//printf("match\n");
 						break;
-					default: panic("please implement me");
+					default: panic("something wrong!");
 				}
 
 				break;
