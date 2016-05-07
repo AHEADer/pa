@@ -92,12 +92,15 @@ static bool make_token(char *e) {
 						break;
 					case REGISTER:
 						printf("match register\n");
+						printf("%s\n",substr_start);
 						break;
 					case DEX:
 						printf("match dex\n");
+						printf("%s\n",substr_start);
 						break;
 					case HEX:
 						printf("match hex\n");
+						printf("%s\n",substr_start);
 					default: panic("something wrong!");
 				}
 
