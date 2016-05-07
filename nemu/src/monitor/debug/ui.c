@@ -106,6 +106,7 @@ static int cmd_info(char *args)
 
 static int cmd_x(char *args)
 {
+	printf("nani?\n");
 	char *nstr = strtok(args, " ");
     char *expr = nstr + strlen(nstr) + 1;
     //int i, n=atoi(nstr);
