@@ -27,9 +27,9 @@ static struct rule {
 	{" ", SPACE},
 	//{"\\+", '+'},					// plus
 	{"\\+", ADDSUB},
-	{"-", ADDSUB},
-	{"*", MULDIV},
-	{"/", MULDIV},
+	{"\\-", ADDSUB},
+	{"\\*", MULDIV},
+	{"\\/", MULDIV},
 	{"\\$[a-z]{1-3}",REGISTER },
 	{"==", EQ}						// equal
 };
