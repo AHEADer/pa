@@ -26,7 +26,7 @@ static struct rule {
 	//{" +",	NOTYPE},				// spaces
 	{" ", SPACE},
 	//{"\\+", '+'},					// plus
-	{"+", ADDSUB},
+	{"\\+", ADDSUB},
 	{"-", ADDSUB},
 	{"*", MULDIV},
 	{"/", MULDIV},
