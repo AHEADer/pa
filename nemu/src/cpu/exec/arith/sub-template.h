@@ -10,9 +10,9 @@ static void do_execute() {
 	cpu.eflags.PF = (result ^ (result >> 1) ^ (result >> 2) ^ (result >> 3) ^ (result >> 4) ^ (result >> 5) ^ (result >> 6) ^ (result >> 7)) & 0x01;
     cpu.eflags.AF = ((uint32_t)(op_dest->val & 0x0f) < (uint32_t)(op_src->val & 0x0f));
 	cpu.eflags.ZF = (result == 0);
-#if DATA_BYTE == 1
+if(DATA_BYTE == 1)
     cpu.eflags.SF = (result >> 7) & 0x1;
-#endif
+//#endif
 #if DATA_BYTE == 2
     cpu.eflags.SF = (result >> 15) & 0x1;
 #endif
