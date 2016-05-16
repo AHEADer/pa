@@ -12,15 +12,11 @@ static void do_execute() {
 	cpu.eflags.ZF = (result == 0);
 if(DATA_BYTE == 1)
     cpu.eflags.SF = (result >> 7) & 0x1;
-//#endif
-#if DATA_BYTE == 2
+else if(DATA_BYTE == 2)
     cpu.eflags.SF = (result >> 15) & 0x1;
-#endif
-#if DATA_BYTE == 4
+else if(DATA_BYTE == 4)
     cpu.eflags.SF = (result >> 31) & 0x1;
-#endif
 	cpu.eflags.OF = (((int32_t)(op_dest->val) >= 0) && ((int32_t)(op_src->val) < 0) && ((int32_t)result < 0)) || (((int32_t)(op_dest->val) <= 0) && ((int32_t)(op_src->val) > 0) && ((int32_t)result > 0));
-
 
 	print_asm_template2();
 }
