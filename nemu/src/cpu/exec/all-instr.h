@@ -15,6 +15,7 @@
 
 #include "jmp/call.h"
 #include "jmp/je.h"
+#include "jmp/cmp.h"
 
 #include "logic/and.h"
 #include "logic/or.h"
