@@ -14,39 +14,97 @@ enum { R_AL, R_CL, R_DL, R_BL, R_AH, R_CH, R_DH, R_BH };
  * For more details about the register encoding scheme, see i386 manual.
  */
 
-typedef struct {
-union{
-	union {
-		uint32_t _32;
-		uint16_t _16;
-		uint8_t _8[2];
-	} gpr[8];
+typedef struct
+{
+    union
+    {
+        union
+        {
+            uint32_t _32;
+            uint16_t _16;
+            uint8_t _8[2];
+        } gpr[8];
 
-	/* Do NOT change the order of the GPRs' definitions. */
-	struct 
-	{
-		uint32_t eax, ecx, edx, ebx, esp, ebp, esi, edi;	
-	};
-	
-	struct 
-	{
-		uint16_t ax, high_bits1, cx, high_bits2, dx, high_bits3, \
-		bx, high_bits4, sp, high_bits5, bp, high_bits6, si, high_bits7, di, high_bits8;	
-	};
-	struct
-	{
-		uint8_t al, ah;
-		uint16_t panding1;
-		uint8_t cl, ch;
-		uint16_t panding2;
-		uint8_t dl, dh;
-		uint16_t panding3;
-		uint8_t bl, bh;
-		uint16_t panding4;
-	};
-};
-	swaddr_t eip;
-union
+        /* Do NOT change the order of the GPRs' definitions. */
+        struct
+        {
+            uint32_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
+        };
+        struct
+        {
+            uint16_t ax, panding1, cx, panding2, dx, panding3, bx, panding4, sp, panding5, bp, panding6, si, panding7, di, panding8;
+        };
+        struct
+        {
+            uint8_t al,ah;
+            uint16_t panding9;
+            uint8_t cl,ch;
+            uint16_t panding10;
+            uint8_t dl,dh;
+            uint16_t panding11;
+            uint8_t bl,bh;
+            uint16_t panding12;
+        };
+    };      //base registers
+    union
+    {
+        struct
+        {
+            uint16_t seg[4];
+        };
+        struct
+        {
+            uint16_t es;
+            uint16_t cs;
+            uint16_t ss;
+            uint16_t ds;
+        };
+    };      //SEGMENT REGISTERS
+    struct
+    {
+        uint16_t limit;
+        uint32_t base;
+    } gdtr;
+    union
+    {
+        struct
+        {
+            uint32_t cr[4];
+        };
+        struct
+        {
+            union
+            {
+                uint32_t reg;
+                struct
+                {
+                    uint32_t pe:1;
+                    uint32_t mp:1;
+                    uint32_t em:1;
+                    uint32_t ts:1;
+                    uint32_t et:1;
+                    uint32_t reserved:26;
+                    uint32_t pg:1;
+                };
+            } cr0;
+            uint32_t cr1;
+            uint32_t cr2;
+            union
+            {
+                struct
+                {
+                    uint32_t pad0                : 3;
+                    uint32_t page_write_through  : 1;
+                    uint32_t page_cache_disable  : 1;
+                    uint32_t pad1                : 7;
+                    uint32_t page_directory_base : 20;
+                };
+                uint32_t reg;
+            } cr3;
+        };
+    };
+    swaddr_t eip;
+    union
     {
         uint32_t reg;
         struct
@@ -70,13 +128,17 @@ union
             uint32_t VM:1;
         };
     } eflags;
+
+    uint8_t current_sreg;
+
 } CPU_state;
 
 extern CPU_state cpu;
 
-static inline int check_reg_index(int index) {
-	assert(index >= 0 && index < 8);
-	return index;
+static inline int check_reg_index(int index)
+{
+    assert(index >= 0 && index < 8);
+    return index;
 }
 
 #define reg_l(index) (cpu.gpr[check_reg_index(index)]._32)
@@ -86,5 +148,6 @@ static inline int check_reg_index(int index) {
 extern const char* regsl[];
 extern const char* regsw[];
 extern const char* regsb[];
+extern const char* regseg[];
 
 #endif
