@@ -2,14 +2,27 @@
 
 #define instr and
 
-static void do_execute () {
-	DATA_TYPE result = op_dest->val & op_src->val;
-	OPERAND_W(op_dest, result);
+static void do_execute ()
+{
+    DATA_TYPE result = op_dest->val & op_src->val;
+    OPERAND_W(op_dest, result);
 
-	/* TODO: Update EFLAGS. */
-	panic("please implement me");
+    cpu.eflags.CF = 0;
+    cpu.eflags.OF = 0;
 
-	print_asm_template2();
+#if DATA_BYTE == 1
+    cpu.eflags.SF = (result >> 7) & 0x1;
+#endif // DATA_BYTE
+#if DATA_BYTE == 2
+    cpu.eflags.SF = (result >> 15) & 0x1;
+#endif // DATA_BYTE
+#if DATA_BYTE == 4
+    cpu.eflags.SF = (result >> 31) & 0x1;
+#endif // DATA_BYTE
+    cpu.eflags.ZF = (result == 0);
+    cpu.eflags.PF = (result ^ (result >> 1) ^ (result >> 2) ^ (result >> 3) ^ (result >> 4) ^ (result >> 5) ^ (result >> 6) ^ (result >> 7)) & 0x01;
+
+    print_asm_template2();
 }
 
 make_instr_helper(i2a)

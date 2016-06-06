@@ -25,7 +25,17 @@ make_helper(concat(decode_i_, SUFFIX)) {
 /* sign immediate */
 make_helper(concat(decode_si_, SUFFIX)) {
 	op_src->type = OP_TYPE_IMM;
+
+	/* TODO: Use instr_fetch() to read ``DATA_BYTE'' bytes of memory pointed 
+	 * by ``eip''. Interpret the result as an signed immediate, and assign
+	 * it to op_src->simm.
+	 *
+	op_src->simm = ???
+	 */
 	op_src->simm = (DATA_TYPE_S)instr_fetch(eip, DATA_BYTE);
+	op_src->val = op_src->simm;
+	//panic("please implement me");
+
 	op_src->val = op_src->simm;
 
 #ifdef DEBUG
@@ -111,8 +121,8 @@ make_helper(concat(decode_i2rm_, SUFFIX)) {
 	return len;
 }
 
-/* XX <- Ib
- * eXX <- Iv
+/* XX <- Ib 
+ * eXX <- Iv 
  */
 make_helper(concat(decode_i2r_, SUFFIX)) {
 	decode_r_internal(eip, op_dest);

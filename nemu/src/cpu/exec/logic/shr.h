@@ -1,6 +1,6 @@
 #ifndef __SHR_H__
 #define __SHR_H__
-
+/************no shr_rm_b and shr_rm_v*****************/
 make_helper(shr_rm_1_b);
 make_helper(shr_rm_cl_b);
 make_helper(shr_rm_imm_b);
