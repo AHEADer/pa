@@ -46,4 +46,5 @@ make_helper(concat5(instr, _, rm, _, SUFFIX))
     return 0;
 }
 
+#undef instr
 #include "cpu/exec/template-end.h"
