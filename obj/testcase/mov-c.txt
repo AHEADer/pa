@@ -23,47 +23,48 @@ Disassembly of section .text:
   10003a:	00 00 00 
   10003d:	c7 05 50 11 10 00 04 	movl   $0x4,0x101150
   100044:	00 00 00 
-  100047:	a1 4c 11 10 00       	mov    0x10114c,%eax
-  10004c:	a3 20 11 10 00       	mov    %eax,0x101120
-  100051:	a1 20 11 10 00       	mov    0x101120,%eax
-  100056:	a3 54 11 10 00       	mov    %eax,0x101154
-  10005b:	a1 40 11 10 00       	mov    0x101140,%eax
-  100060:	85 c0                	test   %eax,%eax
-  100062:	74 06                	je     10006a <main+0x58>
-  100064:	b8 01 00 00 00       	mov    $0x1,%eax
-  100069:	d6                   	(bad)  
-  10006a:	a1 44 11 10 00       	mov    0x101144,%eax
-  10006f:	83 f8 01             	cmp    $0x1,%eax
-  100072:	74 06                	je     10007a <main+0x68>
-  100074:	b8 01 00 00 00       	mov    $0x1,%eax
-  100079:	d6                   	(bad)  
-  10007a:	a1 48 11 10 00       	mov    0x101148,%eax
-  10007f:	83 f8 02             	cmp    $0x2,%eax
-  100082:	74 06                	je     10008a <main+0x78>
-  100084:	b8 01 00 00 00       	mov    $0x1,%eax
-  100089:	d6                   	(bad)  
-  10008a:	a1 4c 11 10 00       	mov    0x10114c,%eax
-  10008f:	83 f8 03             	cmp    $0x3,%eax
-  100092:	74 06                	je     10009a <main+0x88>
-  100094:	b8 01 00 00 00       	mov    $0x1,%eax
-  100099:	d6                   	(bad)  
-  10009a:	a1 50 11 10 00       	mov    0x101150,%eax
-  10009f:	83 f8 04             	cmp    $0x4,%eax
-  1000a2:	74 06                	je     1000aa <main+0x98>
-  1000a4:	b8 01 00 00 00       	mov    $0x1,%eax
-  1000a9:	d6                   	(bad)  
-  1000aa:	a1 20 11 10 00       	mov    0x101120,%eax
-  1000af:	83 f8 03             	cmp    $0x3,%eax
-  1000b2:	74 06                	je     1000ba <main+0xa8>
-  1000b4:	b8 01 00 00 00       	mov    $0x1,%eax
-  1000b9:	d6                   	(bad)  
-  1000ba:	a1 54 11 10 00       	mov    0x101154,%eax
-  1000bf:	83 f8 03             	cmp    $0x3,%eax
-  1000c2:	74 06                	je     1000ca <main+0xb8>
-  1000c4:	b8 01 00 00 00       	mov    $0x1,%eax
-  1000c9:	d6                   	(bad)  
-  1000ca:	b8 00 00 00 00       	mov    $0x0,%eax
-  1000cf:	d6                   	(bad)  
-  1000d0:	b8 00 00 00 00       	mov    $0x0,%eax
-  1000d5:	5d                   	pop    %ebp
-  1000d6:	c3                   	ret    
+  100047:	cc                   	int3   
+  100048:	a1 4c 11 10 00       	mov    0x10114c,%eax
+  10004d:	a3 20 11 10 00       	mov    %eax,0x101120
+  100052:	a1 20 11 10 00       	mov    0x101120,%eax
+  100057:	a3 54 11 10 00       	mov    %eax,0x101154
+  10005c:	a1 40 11 10 00       	mov    0x101140,%eax
+  100061:	85 c0                	test   %eax,%eax
+  100063:	74 06                	je     10006b <main+0x59>
+  100065:	b8 01 00 00 00       	mov    $0x1,%eax
+  10006a:	d6                   	(bad)  
+  10006b:	a1 44 11 10 00       	mov    0x101144,%eax
+  100070:	83 f8 01             	cmp    $0x1,%eax
+  100073:	74 06                	je     10007b <main+0x69>
+  100075:	b8 01 00 00 00       	mov    $0x1,%eax
+  10007a:	d6                   	(bad)  
+  10007b:	a1 48 11 10 00       	mov    0x101148,%eax
+  100080:	83 f8 02             	cmp    $0x2,%eax
+  100083:	74 06                	je     10008b <main+0x79>
+  100085:	b8 01 00 00 00       	mov    $0x1,%eax
+  10008a:	d6                   	(bad)  
+  10008b:	a1 4c 11 10 00       	mov    0x10114c,%eax
+  100090:	83 f8 03             	cmp    $0x3,%eax
+  100093:	74 06                	je     10009b <main+0x89>
+  100095:	b8 01 00 00 00       	mov    $0x1,%eax
+  10009a:	d6                   	(bad)  
+  10009b:	a1 50 11 10 00       	mov    0x101150,%eax
+  1000a0:	83 f8 04             	cmp    $0x4,%eax
+  1000a3:	74 06                	je     1000ab <main+0x99>
+  1000a5:	b8 01 00 00 00       	mov    $0x1,%eax
+  1000aa:	d6                   	(bad)  
+  1000ab:	a1 20 11 10 00       	mov    0x101120,%eax
+  1000b0:	83 f8 03             	cmp    $0x3,%eax
+  1000b3:	74 06                	je     1000bb <main+0xa9>
+  1000b5:	b8 01 00 00 00       	mov    $0x1,%eax
+  1000ba:	d6                   	(bad)  
+  1000bb:	a1 54 11 10 00       	mov    0x101154,%eax
+  1000c0:	83 f8 03             	cmp    $0x3,%eax
+  1000c3:	74 06                	je     1000cb <main+0xb9>
+  1000c5:	b8 01 00 00 00       	mov    $0x1,%eax
+  1000ca:	d6                   	(bad)  
+  1000cb:	b8 00 00 00 00       	mov    $0x0,%eax
+  1000d0:	d6                   	(bad)  
+  1000d1:	b8 00 00 00 00       	mov    $0x0,%eax
+  1000d6:	5d                   	pop    %ebp
+  1000d7:	c3                   	ret    
