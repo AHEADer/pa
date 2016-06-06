@@ -1,12 +1,36 @@
   100000:   bd 00 00 00 00                        movl $0x0,%ebp
   100005:   bc 00 00 00 08                        movl $0x8000000,%esp
   10000a:   83 ec 10                              subl $0x10,%esp
-  10000d:   e8 00 00 00 00                        calll $0x0
+  10000d:   e8 16 00 00 00                        calll $0x16
+  100028:   55                                    pushl %ebp
+  100029:   89 e5                                 movl %esp,%ebp
+  10002b:   83 ec 10                              subl $0x10,%esp
+  10002e:   c7 45 f4 00 00 00 00                  movl $0x0,-0xc(%ebp)
+  100035:   c7 45 f0 00 00 00 00                  movl $0x0,-0x10(%ebp)
+  10003c:   c7 45 fc 00 00 00 00                  movl $0x0,-0x4(%ebp)
+  100043:   eb 57                                 jmpb $0x57
+  10009c:   8b 45 fc                              movl -0x4(%ebp),%eax
+  10009f:   83 f8 07                              cmpl $0x7,%eax
+  1000a2:   76 a1                                 jbeb $0xa1
+  100045:   c7 45 f8 00 00 00 00                  movl $0x0,-0x8(%ebp)
+  10004c:   eb 42                                 jmpb $0x42
+  100090:   8b 45 f8                              movl -0x8(%ebp),%eax
+  100093:   83 f8 07                              cmpl $0x7,%eax
+  100096:   76 b6                                 jbeb $0xb6
+  10004e:   8b 45 f8                              movl -0x8(%ebp),%eax
+  100051:   8b 14 85 20 11 10 00                  movl 0x101120(,%eax,4),%edx
+  100058:   8b 45 fc                              movl -0x4(%ebp),%eax
+  10005b:   8b 04 85 20 11 10 00                  movl 0x101120(,%eax,4),%eax
+  100062:   52                                    pushl %edx
+  100063:   50                                    pushl %eax
+  100064:   e8 a9 ff ff ff                        calll $0xffffffa9
   100012:   55                                    pushl %ebp
   100013:   89 e5                                 movl %esp,%ebp
-  100015:   c7 05 40 11 10 00 00 00 00 00         movl $0x0,0x101140
-  10001f:   c7 05 44 11 10 00 01 00 00 00         movl $0x1,0x101144
-  100029:   c7 05 48 11 10 00 02 00 00 00         movl $0x2,0x101148
-  100033:   c7 05 4c 11 10 00 03 00 00 00         movl $0x3,0x10114c
-  10003d:   c7 05 50 11 10 00 04 00 00 00         movl $0x4,0x101150
-  100047:   cc                                    int3
+  100015:   83 ec 10                              subl $0x10,%esp
+  100018:   8b 55 08                              movl 0x8(%ebp),%edx
+  10001b:   8b 45 0c                              movl 0xc(%ebp),%eax
+  10001e:   01 d0                                 addl %edx,%eax
+  100020:   89 45 fc                              movl %eax,-0x4(%ebp)
+  100023:   8b 45 fc                              movl -0x4(%ebp),%eax
+  100026:   c9                                    leave
+  100027:   c3                                    ret
