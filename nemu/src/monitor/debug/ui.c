@@ -154,18 +154,7 @@ static int cmd_p(char *args)
     	return 0;
     }
 	char *nstr = strtok(args, " ");
-    
-    
-    int dex = 0;
-    
-    
-    int mem = cal_str(expr);
-    printf("0x%x:", mem);
-    for (int i=0; i<dex; ++i)
-    {
-        printf("\t0x%08x", swaddr_read(mem + i*4, 4));
-    }
-    printf("\n");
+    printf("nstr is %s\n",nstr );
 	return 0;
 }
 
