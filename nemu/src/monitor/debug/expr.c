@@ -186,8 +186,9 @@ int cal_str(char *e)
     					while(hex!=0)
     					{
     						dex += (hex%10)*(16^count);
-    						printf("this turn : dex is %d\n",dex );
+    						printf("this turn : dex is %d\n",dex);
     						hex = hex/10;
+    						printf("this turn : hex is %d\n",hex);
     						count++;
     					}
 						sum+=dex;
