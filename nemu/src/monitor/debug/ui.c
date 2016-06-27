@@ -126,7 +126,7 @@ static int cmd_x(char *args)
     		}
     	}
     	else{ 
-    		printf("Only hex & dex is alloweds!\n");
+    		printf("Only hex & dex is allowed!\n");
     		return 0;
     	}
     }
