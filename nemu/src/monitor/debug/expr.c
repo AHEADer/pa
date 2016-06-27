@@ -179,8 +179,20 @@ int cal_str(char *e)
 						printf("%s\n",substr_start);
 						break;
 					case HEX:
+					{
+						int dex=0;
+						int hex = atoi(substr_start);
+    					int count = 0;
+    					while(hex!=0)
+    					{
+    						dex += (hex%10)*16^count;
+    						hex = hex/10;
+    						count++;
+    					}
+						sum+=dex;
 						printf("match hex\n");
 						printf("%s\n",substr_start);
+					}
 						break;
 					default: panic("something wrong!");
 				}
