@@ -190,7 +190,7 @@ int cal_str(char *e)
     						count++;
     					}
 						sum+=dex;
-						printf("match hex\n");
+						printf("match hex %d \n", sum);
 						printf("%s\n",substr_start);
 					}
 						break;
