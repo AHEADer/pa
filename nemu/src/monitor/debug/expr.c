@@ -33,7 +33,7 @@ static struct rule {
 	{"\\*", MULDIV},
 	{"\\/", MULDIV},
 	{"\\$+[a-z]{2,3}",REGISTER },
-	{"[1-9]+", DEX},
+	{"[1-9][0-9]+", DEX},
 	{"0[xX][0-9a-fA-F]+",HEX},
 	{"==", EQ}						// equal
 };
