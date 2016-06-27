@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include <regex.h>
 #include <stdlib.h>
+#include "monitor/expr.h"
 
 enum {
 	NOTYPE = 256, EQ,
@@ -179,22 +180,9 @@ int cal_str(char *e)
 						printf("%s\n",substr_start);
 						break;
 					case HEX:
-					{
-						int dex=0;
-						int hex = atoi(substr_start+2);
-    					int count = 0;
-    					while(hex!=0)
-    					{
-    						dex += (hex%10)*(16^count);
-    						printf("this turn : dex is %d\n",dex);
-    						hex = hex/10;
-    						printf("this turn : hex is %d\n",hex);
-    						count++;
-    					}
-						sum+=dex;
+						sum+=hex_to_dex(atoi(substr_start+2));
 						printf("match hex\n");
 						printf("%s\n",substr_start);
-					}
 						break;
 					default: panic("something wrong!");
 				}
@@ -209,4 +197,19 @@ int cal_str(char *e)
 	}
 
 	return sum;
+}
+
+int hex_to_dex(int hex)
+{
+	int count = 0;
+	int dex = 0;
+	while(hex!=0)
+	{
+    	dex += (hex%10)*(16^count);
+    	printf("this turn : dex is %d\n",dex);
+    	hex = hex/10;
+    	printf("this turn : hex is %d\n",hex);
+    	count++;
+   	}
+   	return dex;
 }

@@ -1,2 +1,2 @@
 [nemu/src/monitor/debug/expr.c,167,cal_str] match rules[7] = "0[xX][0-9a-fA-F]+" at position 0 with len 6: 0x1000
-[nemu/src/monitor/debug/expr.c,167,cal_str] match rules[7] = "0[xX][0-9a-fA-F]+" at position 0 with len 4: 0x10
+[nemu/src/monitor/debug/expr.c,167,cal_str] match rules[7] = "0[xX][0-9a-fA-F]+" at position 0 with len 4: 0x23
