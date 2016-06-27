@@ -182,6 +182,7 @@ int cal_str(char *e)
 					{
 						int dex=0;
 						int hex = atoi(substr_start+2);
+						printf("match hex %d \n", hex);
     					int count = 0;
     					while(hex!=0)
     					{
@@ -190,7 +191,7 @@ int cal_str(char *e)
     						count++;
     					}
 						sum+=dex;
-						printf("match hex %d \n", dex);
+						
 						printf("%s\n",substr_start);
 					}
 						break;
