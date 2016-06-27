@@ -38,6 +38,7 @@ static int cmd_q(char *args) {
 
 static int cmd_info(char *args);
 static int cmd_x(char *args);
+static int cmd_p(char *args);
 static int cmd_help(char *args);
 
 static struct {
@@ -54,6 +55,7 @@ static struct {
 	{ "x", "Print N 4bits from address starting with the value of EXPRESSION", cmd_x},
 	{ "w", "Add a watchpoint to watch the value of EXPR", cmd_q},
 	{ "bt", "Backtrace: display the program stack.", cmd_q},
+	{ "p", "Print: display the program variable.", cmd_p},
 	/* TODO: Add more commands */
 
 };
@@ -105,6 +107,46 @@ static int cmd_info(char *args)
 }
 
 static int cmd_x(char *args)
+{
+	char *nstr = strtok(args, " ");
+    char *expr = nstr + strlen(nstr) + 1;
+    //int i, n=atoi(nstr);
+    int dex = 0;
+    if (*nstr == '0' && strlen(nstr)!=1)
+    {
+    	if (*(nstr+1)=='x')	//hex
+    	{
+    		int hex = atoi(nstr+2);
+    		int count = 0;
+    		while(hex!=0)
+    		{
+    			dex += (hex%10)*16^count;
+    			hex = hex/10;
+    			count++;
+    		}
+    	}
+    	else{ 
+    		printf("Only hex & dex is alloweds!\n");
+    		return 0;
+    	}
+    }
+    dex = atoi(nstr);
+    if (strlen(expr)==0)
+    {
+    	printf("Argument lacks!\n");
+    	return 0;
+    }
+    int mem = cal_str(expr);
+    printf("0x%x:", mem);
+    for (int i=0; i<dex; ++i)
+    {
+        printf("\t0x%08x", swaddr_read(mem + i*4, 4));
+    }
+    printf("\n");
+	return 0;
+}
+
+static int cmd_p(char *args)
 {
 	char *nstr = strtok(args, " ");
     char *expr = nstr + strlen(nstr) + 1;
