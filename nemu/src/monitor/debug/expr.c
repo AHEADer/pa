@@ -201,13 +201,13 @@ int cal_str(char *e)
 
 int hex_to_dex(int hex)
 {
-	int count = 0;
 	int dex = 0;
+	int factor = 1;
 	while(hex!=0)
 	{
-    	dex += (hex%10)*(16^count);
+    	dex += (hex%10)*factor;
     	hex = hex/10;
-    	count++;
+    	factor = factor*16;
    	}
    	return dex;
 }
