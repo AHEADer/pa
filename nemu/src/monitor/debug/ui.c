@@ -117,12 +117,12 @@ static int cmd_x(char *args)
     	if (*(nstr+1)=='x')	//hex
     	{
     		int hex = atoi(nstr+2);
-    		int count = 0;
+    		int count = 1;
     		while(hex!=0)
     		{
-    			dex += (hex%10)*16^count;
+    			dex += (hex%10)*count;
     			hex = hex/10;
-    			count++;
+    			count = count*16;
     		}
     	}
     	else{ 
@@ -152,30 +152,11 @@ static int cmd_p(char *args)
     char *expr = nstr + strlen(nstr) + 1;
     //int i, n=atoi(nstr);
     int dex = 0;
-    if (*nstr == '0' && strlen(nstr)!=1)
-    {
-    	if (*(nstr+1)=='x')	//hex
-    	{
-    		int hex = atoi(nstr+2);
-    		int count = 0;
-    		while(hex!=0)
-    		{
-    			dex += (hex%10)*16^count;
-    			hex = hex/10;
-    			count++;
-    		}
-    	}
-    	else{ 
-    		printf("Only hex & dex is alloweds!\n");
-    		return 0;
-    	}
-    }
-    dex = atoi(nstr);
-    if (strlen(expr)==0)
+    if (!nstr)
     {
     	printf("Argument lacks!\n");
-    	return 0;
     }
+    
     int mem = cal_str(expr);
     printf("0x%x:", mem);
     for (int i=0; i<dex; ++i)

@@ -176,11 +176,9 @@ int cal_str(char *e)
 						break;
 					case DEX:
 						sum+=atoi(substr_start);
-						printf("match dex\n");
 						break;
 					case HEX:
 						sum+=hex_to_dex(atoi(substr_start+2));
-						printf("match hex\n");
 						break;
 					default: panic("something wrong!");
 				}
