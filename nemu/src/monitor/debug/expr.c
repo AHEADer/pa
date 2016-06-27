@@ -5,6 +5,7 @@
  */
 #include <sys/types.h>
 #include <regex.h>
+#include <stdlib.h>
 
 enum {
 	NOTYPE = 256, EQ,
@@ -173,12 +174,14 @@ int cal_str(char *e)
 						printf("%s\n",substr_start);
 						break;
 					case DEX:
+						sum+=atoi(substr_start);
 						printf("match dex\n");
 						printf("%s\n",substr_start);
 						break;
 					case HEX:
 						printf("match hex\n");
 						printf("%s\n",substr_start);
+						break;
 					default: panic("something wrong!");
 				}
 
