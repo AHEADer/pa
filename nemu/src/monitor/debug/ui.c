@@ -154,8 +154,8 @@ static int cmd_p(char *args)
     	return 0;
     }
 	char *nstr = strtok(args, " ");
-    char *expr = nstr + strlen(nstr) + 1;
-    //int i, n=atoi(nstr);
+    
+    
     int dex = 0;
     
     
