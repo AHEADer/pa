@@ -202,7 +202,7 @@ int cal_str(char *e)
 		}
 
 		if(i == NR_REGEX) {
-			printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
+			printf("2nd no match at position %d\n%s\n%*.s^\n", position, e, position, "");
 		}
 	}
 
