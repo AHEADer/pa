@@ -181,7 +181,7 @@ int cal_str(char *e)
 					case HEX:
 					{
 						int dex=0;
-						int hex = atoi(substr_start);
+						int hex = atoi(substr_start+2);
     					int count = 0;
     					while(hex!=0)
     					{
