@@ -10,7 +10,6 @@ static Elf32_Sym *symtab = NULL;
 static int nr_symtab_entry;
 
 void load_elf_tables(int argc, char *argv[]) {
-	printf("hhhhhhhhhhhhhhhhhhhhhh\n");
 	int ret;
 	Assert(argc == 2, "run NEMU with format 'nemu [program]'");
 	exec_file = argv[1];

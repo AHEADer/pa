@@ -9,7 +9,7 @@
 #include <elf.h>
 
 void cpu_exec(uint32_t);
-//extern char *strtab;
+extern char *strtab;
 //extern Elf32_Sym *symtab;
 //extern int nr_symtab_entry;
 
