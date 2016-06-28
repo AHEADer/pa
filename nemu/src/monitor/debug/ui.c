@@ -2,11 +2,13 @@
 #include "monitor/expr.h"
 #include "monitor/watchpoint.h"
 #include "nemu.h"
+#include "common.h"
 
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <elf.h>
+
 
 void cpu_exec(uint32_t);
 extern char *strtab;
@@ -158,7 +160,7 @@ static int cmd_p(char *args)
     	return 0;
     }
 	//char *nstr = strtok(args, " ");
-    //printf("nstr is %s\n",strtab );
+    printf("strtab is %s\n",strtab );
 	return 0;
 }
 

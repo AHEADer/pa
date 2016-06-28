@@ -7,6 +7,7 @@
 #include <regex.h>
 #include <stdlib.h>
 #include "monitor/expr.h"
+#include <elf.h>
 
 enum {
 	NOTYPE = 256, EQ,
@@ -42,6 +43,10 @@ static struct rule {
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
 
 static regex_t re[NR_REGEX];
+
+extern char *strtab;
+extern Elf32_Sym *symtab;
+extern int nr_symtab_entry;
 
 /* Rules are used for many times.
  * Therefore we compile them only once before any usage.

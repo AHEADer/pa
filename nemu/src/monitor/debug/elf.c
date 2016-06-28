@@ -1,11 +1,10 @@
 #include "common.h"
 #include <stdlib.h>
 #include <elf.h>
-#include <stdio.h>
 
 char *exec_file = NULL;
 
-static char *strtab = NULL;
+char *strtab = NULL;
 static Elf32_Sym *symtab = NULL;
 static int nr_symtab_entry;
 
