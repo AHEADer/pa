@@ -1,10 +1,11 @@
 #include "nemu.h"
-
+#include <stdio.h>
 #define ENTRY_START 0x100000
 
 extern uint8_t entry [];
 extern uint32_t entry_len;
 extern char *exec_file;
+extern char *strtab;
 
 void load_elf_tables(int, char *[]);
 void init_regex();
@@ -31,6 +32,7 @@ void init_monitor(int argc, char *argv[]) {
 
 	/* Load the string table and symbol table from the ELF file for future use. */
 	load_elf_tables(argc, argv);
+	printf("monitor: %s\n",strtab );
 	/* Compile the regular expressions. */
 	init_regex();
 
