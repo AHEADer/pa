@@ -8,7 +8,6 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <elf.h>
-#include <string.h>
 
 void cpu_exec(uint32_t);
 extern char *strtab;
@@ -160,7 +159,7 @@ static int cmd_p(char *args)
     	return 0;
     }
 	//char *nstr = strtok(args, " ");
-    printf("strtab is %d\n",(int)strlen(strtab) );
+    //printf("strtab is %d\n",(int)strlen(strtab) );
 	return 0;
 }
 
