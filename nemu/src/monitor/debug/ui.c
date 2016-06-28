@@ -6,8 +6,12 @@
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <elf.h>
 
 void cpu_exec(uint32_t);
+//extern char *strtab;
+//extern Elf32_Sym *symtab;
+//extern int nr_symtab_entry;
 
 /* We use the ``readline'' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
@@ -153,8 +157,8 @@ static int cmd_p(char *args)
     	printf("Argument lacks!\n");
     	return 0;
     }
-	char *nstr = strtok(args, " ");
-    printf("nstr is %s\n",nstr );
+	//char *nstr = strtok(args, " ");
+    //printf("nstr is %s\n",strtab );
 	return 0;
 }
 
