@@ -1,7 +1,6 @@
 #include "common.h"
 #include <stdlib.h>
 #include <elf.h>
-#include <stdio.h>
 
 char *exec_file = NULL;
 
@@ -70,7 +69,6 @@ void load_elf_tables(int argc, char *argv[]) {
 			strtab = malloc(sh[i].sh_size);
 			fseek(fp, sh[i].sh_offset, SEEK_SET);
 			ret = fread(strtab, sh[i].sh_size, 1, fp);
-			printf("strtab is %s\n",strtab );
 			assert(ret == 1);
 		}
 	}
