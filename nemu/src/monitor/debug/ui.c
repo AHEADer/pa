@@ -161,7 +161,7 @@ static int cmd_p(char *args)
 	//char *nstr = strtok(args, " ");
     printf("nr_symtab_entry is %d\n",nr_symtab_entry );
     printf("strtab is %s\n",strtab );
-    printf("symtab is %s\n",strtab );
+    printf("symtab is %d\n",(int)symtab[9].st_name);
 	return 0;
 }
 
