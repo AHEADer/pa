@@ -6,23 +6,23 @@
 typedef int FLOAT;
 
 static inline int F2int(FLOAT a) {
-	nemu_assert(0);
-	return 0;
+	return a/(1<<16);
 }
 
 static inline FLOAT int2F(int a) {
-	nemu_assert(0);
-	return 0;
+	return a*(1<<16);
 }
 
 static inline FLOAT F_mul_int(FLOAT a, int b) {
-	nemu_assert(0);
-	return 0;
+	float tmp = (float)a/(1<<16);
+	tmp = tmp*b;
+	return (FLOAT)(tmp*(1<<16));
 }
 
 static inline FLOAT F_div_int(FLOAT a, int b) {
-	nemu_assert(0);
-	return 0;
+	float tmp = (float)a/(1<<16);
+	tmp = tmp/b;
+	return (FLOAT)(tmp*(1<<16));
 }
 
 FLOAT f2F(float);
