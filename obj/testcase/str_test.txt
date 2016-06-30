@@ -1,5 +1,5 @@
 
-obj/testcase/add:     file format elf32-i386
+obj/testcase/str_test:     file format elf32-i386
 
 
 Disassembly of section .text:
@@ -33,9 +33,9 @@ Disassembly of section .text:
   100045:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%ebp)
   10004c:	eb 42                	jmp    100090 <main+0x68>
   10004e:	8b 45 f8             	mov    -0x8(%ebp),%eax
-  100051:	8b 14 85 20 11 10 00 	mov    0x101120(,%eax,4),%edx
+  100051:	8b 14 85 40 11 10 00 	mov    0x101140(,%eax,4),%edx
   100058:	8b 45 fc             	mov    -0x4(%ebp),%eax
-  10005b:	8b 04 85 20 11 10 00 	mov    0x101120(,%eax,4),%eax
+  10005b:	8b 04 85 40 11 10 00 	mov    0x101140(,%eax,4),%eax
   100062:	52                   	push   %edx
   100063:	50                   	push   %eax
   100064:	e8 a9 ff ff ff       	call   100012 <add>
@@ -44,7 +44,7 @@ Disassembly of section .text:
   10006e:	8b 45 f4             	mov    -0xc(%ebp),%eax
   100071:	8d 50 01             	lea    0x1(%eax),%edx
   100074:	89 55 f4             	mov    %edx,-0xc(%ebp)
-  100077:	8b 04 85 40 11 10 00 	mov    0x101140(,%eax,4),%eax
+  100077:	8b 04 85 60 11 10 00 	mov    0x101160(,%eax,4),%eax
   10007e:	39 c1                	cmp    %eax,%ecx
   100080:	74 06                	je     100088 <main+0x60>
   100082:	b8 01 00 00 00       	mov    $0x1,%eax
