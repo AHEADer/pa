@@ -165,7 +165,10 @@ static int cmd_p(char *args)
     }
     for(int i=0; i<9; i++)
     {
-    	printf("symtab is %x\n",(int)symtab[i].st_value);
+    	if (symtab[i].st_info == STT_SECTION)
+    	{
+    		printf("symtab is %x\n",(int)symtab[i].st_value);
+    	}  	
     }
 	return 0;
 }
