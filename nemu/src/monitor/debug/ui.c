@@ -44,6 +44,7 @@ static int cmd_q(char *args) {
 static int cmd_info(char *args);
 static int cmd_x(char *args);
 static int cmd_p(char *args);
+static int cmd_bt(char *args);
 static int cmd_help(char *args);
 
 static struct {
@@ -59,7 +60,7 @@ static struct {
 	{ "d", "Delete some breakpoints or auto-display expressions", cmd_q},
 	{ "x", "Print N 4bits from address starting with the value of EXPRESSION", cmd_x},
 	{ "w", "Add a watchpoint to watch the value of EXPR", cmd_q},
-	{ "bt", "Backtrace: display the program stack.", cmd_q},
+	{ "bt", "Backtrace: display the program stack.", cmd_bt},
 	{ "p", "Print: display the program variable.", cmd_p},
 	/* TODO: Add more commands */
 
@@ -188,6 +189,45 @@ static int cmd_p(char *args)
     	printf("not found this variable\n");
     }
 	return 0;
+}
+
+static void cal_bt(swaddr_t eip, uint32_t ebp, int num)
+{
+    if (ebp == 0)
+        return;
+
+    int i;
+    for (i = 0; i< nr_symtab_entry; ++i)
+    {
+        Elf32_Sym *t = symtab + i;
+        if (ELF32_ST_TYPE(t->st_info) == STT_FUNC)
+            if ((eip >= t->st_value) && (eip < (t->st_value + t->st_size)))
+                break;
+    }
+    cpu.current_sreg = 2;
+    char *func_name = strtab + (symtab+i)->st_name;
+    int offset = eip - (symtab+i)->st_value;
+    int argv[5];
+    int j;
+    swaddr_t address = ebp + 8;
+    for (j=4; j>=0; --j)
+    {
+        if (address < HW_MEM_SIZE)
+        {
+            argv[j] = swaddr_read(address, 4);
+            address += 4;
+        }
+        else
+            argv[j] = 0;
+    }
+    printf("#%d 0x%08x %s+0x%x(argv1=%x, argv2=%x, argv3=%x, argv4=%x, argv5=%x)\n", num, eip, func_name, offset, argv[0], argv[1], argv[2], argv[3], argv[4]);
+    cal_bt(swaddr_read(ebp + 4, 4), swaddr_read(ebp, 4), num+1);
+}
+
+static int cmd_bt(char *args)
+{
+    cal_bt(cpu.eip, cpu.ebp, 0);
+    return 0;
 }
 
 void ui_mainloop() {
