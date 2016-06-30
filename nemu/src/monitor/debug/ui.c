@@ -160,7 +160,10 @@ static int cmd_p(char *args)
     }
 	//char *nstr = strtok(args, " ");
     printf("nr_symtab_entry is %d\n",nr_symtab_entry );
-    printf("strtab is %c\n",strtab[9] );
+    for(int i=0; i<9; i++)
+    {
+    	printf("strtab is %2x\n",(int)strtab[9] );
+    }
     printf("symtab is %d\n",(int)symtab[9].st_name);
 	return 0;
 }
