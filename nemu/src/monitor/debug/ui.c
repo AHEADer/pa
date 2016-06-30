@@ -153,12 +153,18 @@ static int cmd_x(char *args)
 
 static int cmd_p(char *args)
 {
+	char address_flag=0;
 	if (!args)
     {
     	printf("Argument lacks!\n");
     	return 0;
     }
-    printf("nr_symtab_entry is %d\n",nr_symtab_entry );
+    //printf("nr_symtab_entry is %d\n",nr_symtab_entry );
+    if (*args == '*')
+    {
+    	args++;
+    	address_flag = 1;
+    }
     int section_num = 0;	//to calculate the section numbers
     for(int i=0; i<8; i++)
     {
@@ -170,7 +176,13 @@ static int cmd_p(char *args)
     int locate_num = search_strtab(args, strtab);
     if (locate_num)
     {
-    	printf("%x\n", symtab[locate_num+section_num].st_value);
+    	if (address_flag)
+    	{
+    		printf("value is 0x%08x\n", swaddr_read(symtab[locate_num+section_num].st_value, 4));
+    	}
+    	else{
+    		printf("%x\n", symtab[locate_num+section_num].st_value);
+    	}
     }
     else{
     	printf("not found this variable\n");
