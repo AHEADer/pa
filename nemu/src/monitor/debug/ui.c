@@ -158,14 +158,12 @@ static int cmd_p(char *args)
     	printf("Argument lacks!\n");
     	return 0;
     }
-	//char *nstr = strtok(args, " ");
-	printf("%s\n", args);
     printf("nr_symtab_entry is %d\n",nr_symtab_entry );
     for(int i=0; i<9; i++)
     {
     	printf("strtab is %2x\n",(int)strtab[i] );
     }
-    printf("symtab is %d\n",(int)symtab[9].st_name);
+    printf("symtab is %x\n",(int)symtab[9].st_value);
 	return 0;
 }
 
