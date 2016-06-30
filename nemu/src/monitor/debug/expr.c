@@ -215,5 +215,25 @@ int hex_to_dex(int hex)
 
 int search_strtab(char* args, char* strtab)
 {
+	int location = 1;
+	while(1)
+	{
+		if (*strtab=='\0')
+		{
+			strtab++;
+			if (*strtab=='\0')
+			{
+				break;
+			}
+		}
+		if(strcmp(args, strtab)==0)
+			return location;
+		else{
+			location++;
+			while(*strtab!='\0')
+				strtab++;
+		}
+	}
+	
 	return 0;
 }
