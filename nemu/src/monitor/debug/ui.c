@@ -159,6 +159,7 @@ static int cmd_p(char *args)
     	return 0;
     }
 	//char *nstr = strtok(args, " ");
+	printf("%s\n", args);
     printf("nr_symtab_entry is %d\n",nr_symtab_entry );
     for(int i=0; i<9; i++)
     {
