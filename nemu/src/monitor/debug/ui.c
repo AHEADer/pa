@@ -163,7 +163,10 @@ static int cmd_p(char *args)
     {
     	printf("strtab is %2x\n",(int)strtab[i] );
     }
-    printf("symtab is %x\n",(int)symtab[9].st_value);
+    for(int i=0; i<9; i++)
+    {
+    	printf("symtab is %x\n",(int)symtab[i].st_value);
+    }
 	return 0;
 }
 
