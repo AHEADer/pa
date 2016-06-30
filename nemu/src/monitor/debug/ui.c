@@ -159,16 +159,21 @@ static int cmd_p(char *args)
     	return 0;
     }
     printf("nr_symtab_entry is %d\n",nr_symtab_entry );
-    for(int i=0; i<9; i++)
-    {
-    	printf("strtab is %2x\n",(int)strtab[i] );
-    }
-    for(int i=0; i<9; i++)
+    int section_num = 0;	//to calculate the section numbers
+    for(int i=0; i<8; i++)
     {
     	if (symtab[i].st_info == STT_SECTION)
     	{
-    		printf("symtab is %x\n",(int)symtab[i].st_value);
+    		section_num++;
     	}  	
+    }
+    int locate_num = search_strtab(args, strtab);
+    if (locate_num)
+    {
+    	printf("%x\n", symtab[locate_num+section_num].st_value);
+    }
+    else{
+    	printf("not found this variable\n");
     }
 	return 0;
 }

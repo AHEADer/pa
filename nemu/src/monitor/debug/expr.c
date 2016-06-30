@@ -212,3 +212,8 @@ int hex_to_dex(int hex)
    	}
    	return dex;
 }
+
+int search_strtab(char* args, char* strtab)
+{
+	return 0;
+}

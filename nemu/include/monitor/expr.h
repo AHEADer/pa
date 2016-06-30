@@ -6,5 +6,6 @@
 uint32_t expr(char *, bool *);
 int cal_str(char *s);
 int hex_to_dex(int hex);
-int ret_arg_address(char *s);
+
+int search_strtab(char* args, char* strtab);
 #endif
