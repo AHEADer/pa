@@ -1,1 +1,41 @@
-test.sh: line 9: /usr/bin/time: No such file or directory
+Welcome to NEMU!
+The executable is obj/testcase/hello.
+For help, type "help"
+(nemu) c
+
+Hit breakpoint at eip = 0x00100018
+(nemu) q
+
+
+===== the original log.txt =====
+
+  100000:   bd 00 00 00 00                        movl $0x0,%ebp
+  100005:   bc 00 00 00 08                        movl $0x8000000,%esp
+  10000a:   83 ec 10                              subl $0x10,%esp
+  10000d:   e8 17 00 00 00                        calll $0x17
+  100029:   55                                    pushl %ebp
+  10002a:   89 e5                                 movl %esp,%ebp
+  10002c:   83 ec 10                              subl $0x10,%esp
+  10002f:   c7 45 f4 00 00 00 00                  movl $0x0,-0xc(%ebp)
+  100036:   c7 45 f0 00 00 00 00                  movl $0x0,-0x10(%ebp)
+  10003d:   c7 45 fc 00 00 00 00                  movl $0x0,-0x4(%ebp)
+  100044:   eb 57                                 jmpb $0x57
+  10009d:   8b 45 fc                              movl -0x4(%ebp),%eax
+  1000a0:   83 f8 07                              cmpl $0x7,%eax
+  1000a3:   76 a1                                 jbeb $0xa1
+  100046:   c7 45 f8 00 00 00 00                  movl $0x0,-0x8(%ebp)
+  10004d:   eb 42                                 jmpb $0x42
+  100091:   8b 45 f8                              movl -0x8(%ebp),%eax
+  100094:   83 f8 07                              cmpl $0x7,%eax
+  100097:   76 b6                                 jbeb $0xb6
+  10004f:   8b 45 f8                              movl -0x8(%ebp),%eax
+  100052:   8b 14 85 40 11 80 00                  movl 0x801140(,%eax,4),%edx
+  100059:   8b 45 fc                              movl -0x4(%ebp),%eax
+  10005c:   8b 04 85 40 11 80 00                  movl 0x801140(,%eax,4),%eax
+  100063:   52                                    pushl %edx
+  100064:   50                                    pushl %eax
+  100065:   e8 a8 ff ff ff                        calll $0xffffffa8
+  100012:   55                                    pushl %ebp
+  100013:   89 e5                                 movl %esp,%ebp
+  100015:   83 ec 10                              subl $0x10,%esp
+  100018:   cc                                    int3
