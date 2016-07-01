@@ -1,0 +1,91 @@
+
+obj/testcase/gotbaha:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00800000 <start>:
+  800000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  800005:	bc 00 00 00 08       	mov    $0x8000000,%esp
+  80000a:	83 ec 10             	sub    $0x10,%esp
+  80000d:	e8 8e 00 00 00       	call   8000a0 <main>
+
+00800012 <is_prime>:
+  800012:	55                   	push   %ebp
+  800013:	89 e5                	mov    %esp,%ebp
+  800015:	83 ec 10             	sub    $0x10,%esp
+  800018:	83 7d 08 01          	cmpl   $0x1,0x8(%ebp)
+  80001c:	7f 07                	jg     800025 <is_prime+0x13>
+  80001e:	b8 00 00 00 00       	mov    $0x0,%eax
+  800023:	eb 2e                	jmp    800053 <is_prime+0x41>
+  800025:	c7 45 fc 02 00 00 00 	movl   $0x2,-0x4(%ebp)
+  80002c:	eb 18                	jmp    800046 <is_prime+0x34>
+  80002e:	8b 45 08             	mov    0x8(%ebp),%eax
+  800031:	99                   	cltd   
+  800032:	f7 7d fc             	idivl  -0x4(%ebp)
+  800035:	89 d0                	mov    %edx,%eax
+  800037:	85 c0                	test   %eax,%eax
+  800039:	75 07                	jne    800042 <is_prime+0x30>
+  80003b:	b8 00 00 00 00       	mov    $0x0,%eax
+  800040:	eb 11                	jmp    800053 <is_prime+0x41>
+  800042:	83 45 fc 01          	addl   $0x1,-0x4(%ebp)
+  800046:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  800049:	3b 45 08             	cmp    0x8(%ebp),%eax
+  80004c:	7c e0                	jl     80002e <is_prime+0x1c>
+  80004e:	b8 01 00 00 00       	mov    $0x1,%eax
+  800053:	c9                   	leave  
+  800054:	c3                   	ret    
+
+00800055 <gotbaha>:
+  800055:	55                   	push   %ebp
+  800056:	89 e5                	mov    %esp,%ebp
+  800058:	83 ec 10             	sub    $0x10,%esp
+  80005b:	c7 45 fc 02 00 00 00 	movl   $0x2,-0x4(%ebp)
+  800062:	eb 2d                	jmp    800091 <gotbaha+0x3c>
+  800064:	ff 75 fc             	pushl  -0x4(%ebp)
+  800067:	e8 a6 ff ff ff       	call   800012 <is_prime>
+  80006c:	83 c4 04             	add    $0x4,%esp
+  80006f:	85 c0                	test   %eax,%eax
+  800071:	74 1a                	je     80008d <gotbaha+0x38>
+  800073:	8b 45 08             	mov    0x8(%ebp),%eax
+  800076:	2b 45 fc             	sub    -0x4(%ebp),%eax
+  800079:	50                   	push   %eax
+  80007a:	e8 93 ff ff ff       	call   800012 <is_prime>
+  80007f:	83 c4 04             	add    $0x4,%esp
+  800082:	85 c0                	test   %eax,%eax
+  800084:	74 07                	je     80008d <gotbaha+0x38>
+  800086:	b8 01 00 00 00       	mov    $0x1,%eax
+  80008b:	eb 11                	jmp    80009e <gotbaha+0x49>
+  80008d:	83 45 fc 01          	addl   $0x1,-0x4(%ebp)
+  800091:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  800094:	3b 45 08             	cmp    0x8(%ebp),%eax
+  800097:	7c cb                	jl     800064 <gotbaha+0xf>
+  800099:	b8 00 00 00 00       	mov    $0x0,%eax
+  80009e:	c9                   	leave  
+  80009f:	c3                   	ret    
+
+008000a0 <main>:
+  8000a0:	55                   	push   %ebp
+  8000a1:	89 e5                	mov    %esp,%ebp
+  8000a3:	83 ec 10             	sub    $0x10,%esp
+  8000a6:	c7 45 fc 04 00 00 00 	movl   $0x4,-0x4(%ebp)
+  8000ad:	eb 1a                	jmp    8000c9 <main+0x29>
+  8000af:	ff 75 fc             	pushl  -0x4(%ebp)
+  8000b2:	e8 9e ff ff ff       	call   800055 <gotbaha>
+  8000b7:	83 c4 04             	add    $0x4,%esp
+  8000ba:	83 f8 01             	cmp    $0x1,%eax
+  8000bd:	74 06                	je     8000c5 <main+0x25>
+  8000bf:	b8 01 00 00 00       	mov    $0x1,%eax
+  8000c4:	d6                   	(bad)  
+  8000c5:	83 45 fc 02          	addl   $0x2,-0x4(%ebp)
+  8000c9:	83 7d fc 64          	cmpl   $0x64,-0x4(%ebp)
+  8000cd:	7e e0                	jle    8000af <main+0xf>
+  8000cf:	83 7d fc 66          	cmpl   $0x66,-0x4(%ebp)
+  8000d3:	74 06                	je     8000db <main+0x3b>
+  8000d5:	b8 01 00 00 00       	mov    $0x1,%eax
+  8000da:	d6                   	(bad)  
+  8000db:	b8 00 00 00 00       	mov    $0x0,%eax
+  8000e0:	d6                   	(bad)  
+  8000e1:	b8 00 00 00 00       	mov    $0x0,%eax
+  8000e6:	c9                   	leave  
+  8000e7:	c3                   	ret    

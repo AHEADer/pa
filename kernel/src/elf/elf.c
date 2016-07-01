@@ -16,6 +16,9 @@ void ramdisk_read(uint8_t *, uint32_t, uint32_t);
 void create_video_mapping();
 uint32_t get_ucr3();
 
+/*
+loader: load user program to assigned memory address
+*/
 uint32_t loader() {
 	Elf32_Ehdr *elf;
 	Elf32_Phdr *ph = NULL;
