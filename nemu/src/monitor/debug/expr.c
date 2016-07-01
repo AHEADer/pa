@@ -129,7 +129,8 @@ int seach_register(char* reg)
 	{
 		return cpu.eip;
 	}
-	for(int i=0;i<8;i++)
+	int i;
+	for(i=0;i<8;i++)
 	{
 		if (!strcmp(reg+1, regsl[i]))
 		{
@@ -137,7 +138,7 @@ int seach_register(char* reg)
 		}
 	}
 
-	for(int i=0;i<8;i++)
+	for(i=0;i<8;i++)
 	{
 		if (!strcmp(reg+1, regsw[i]))
 		{
@@ -145,7 +146,7 @@ int seach_register(char* reg)
 		}
 	}
 
-	for(int i=0;i<8;i++)
+	for(i=0;i<8;i++)
 	{
 		if (!strcmp(reg+1, regsb[i]))
 		{

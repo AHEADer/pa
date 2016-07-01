@@ -144,7 +144,8 @@ static int cmd_x(char *args)
     }
     int mem = cal_str(expr);
     printf("0x%x:", mem);
-    for (int i=0; i<dex; ++i)
+    int i;
+    for (i=0; i<dex; ++i)
     {
         printf("\t0x%08x", swaddr_read(mem + i*4, 4));
     }
@@ -167,7 +168,8 @@ static int cmd_p(char *args)
     	address_flag = 1;
     }
     int section_num = 0;	//to calculate the section numbers
-    for(int i=0; i<8; i++)
+    int i;
+    for(i=0; i<8; i++)
     {
     	if (symtab[i].st_info == STT_SECTION)
     	{
