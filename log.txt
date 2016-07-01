@@ -1,0 +1,77 @@
+  100000:   bd 00 00 00 00                        movl $0x0,%ebp
+  100005:   bc 00 00 00 08                        movl $0x8000000,%esp
+  10000a:   e9 81 11 00 00                        jmpl $0x1181
+  101190:   55                                    pushl %ebp
+  101191:   b8 40 11 10 00                        movl $0x101140,%eax
+  101196:   89 e5                                 movl %esp,%ebp
+  101198:   83 ec 08                              subl $0x8,%esp
+  10119b:                                         jmpl %eax
+  101140:   55                                    pushl %ebp
+  101141:   89 e5                                 movl %esp,%ebp
+  101143:   83 ec 08                              subl $0x8,%esp
+  101146:   68 bc 16 10 00                        pushl $0x1016bc
+  10114b:   6a 4a                                 pushb $0x4a
+  10114d:   68 74 16 10 00                        pushl $0x101674
+  101152:   68 88 16 10 00                        pushl $0x101688
+  101157:   e8 64 f5 ff ff                        calll $0xfffff564
+  1006c0:   55                                    pushl %ebp
+  1006c1:   89 e5                                 movl %esp,%ebp
+  1006c3:   5d                                    popl %ebp
+  1006c4:   c3                                    ret
+  10115c:   e8 7f ff ff ff                        calll $0xffffff7f
+  1010e0:   55                                    pushl %ebp
+  1010e1:   89 e5                                 movl %esp,%ebp
+  1010e3:   81 ec 0c 10 00 00                     subl $0x100c,%esp
+  1010e9:   8d 85 f8 ef ff ff                     leal -0x1008(%ebp),%eax
+  1010ef:   68 00 10 00 00                        pushl $0x1000
+  1010f4:   6a 00                                 pushb $0x0
+  1010f6:   50                                    pushl %eax
+  1010f7:   e8 84 ff ff ff                        calll $0xffffff84
+  101080:   55                                    pushl %ebp
+  101081:   89 e5                                 movl %esp,%ebp
+  101083:   53                                    pushl %ebx
+  101084:   8b 55 0c                              movl 0xc(%ebp),%edx
+  101087:   8b 4d 10                              movl 0x10(%ebp),%ecx
+  10108a:   8b 5d 08                              movl 0x8(%ebp),%ebx
+  10108d:   8d 04 0a                              leal (%edx,%ecx,1),%eax
+  101090:   3d ff ff 09 00                        cmpl $0x9ffff,%eax
+  101095:   76 06                                 jbeb $0x6
+  10109d:   89 5d 08                              movl %ebx,0x8(%ebp)
+  1010a0:   89 4d 10                              movl %ecx,0x10(%ebp)
+  1010a3:   89 55 0c                              movl %edx,0xc(%ebp)
+  1010a6:   5b                                    popl %ebx
+  1010a7:   5d                                    popl %ebp
+  1010a8:   e9 13 01 00 00                        jmpl $0x113
+  1011c0:   55                                    pushl %ebp
+  1011c1:   89 e5                                 movl %esp,%ebp
+  1011c3:   56                                    pushl %esi
+  1011c4:   57                                    pushl %edi
+  1011c5:   53                                    pushl %ebx
+  1011c6:   8b 7d 08                              movl 0x8(%ebp),%edi
+  1011c9:   8b 4d 10                              movl 0x10(%ebp),%ecx
+  1011cc:   8b 75 0c                              movl 0xc(%ebp),%esi
+  1011cf:   fc                                    cld
+  1011d0:   83 f9 08                              cmpl $0x8,%ecx
+  1011d3:   76 26                                 jbeb $0x26
+  1011d5:   89 fa                                 movl %edi,%edx
+  1011d7:   89 cb                                 movl %ecx,%ebx
+  1011d9:   83 e2 03                              andl $0x3,%edx
+  1011dc:   74 10                                 jeb $0x10
+  1011ee:   c1 e9 02                              shrl $0x2,%ecx
+  1011f1:   8d 76 00                              leal 0(%esi),%esi
+  1011f4:   f3 a5                                 rep leal 0(%esi),%esi[cnt = 1024]
+  1011f6:   89 d9                                 movl %ebx,%ecx
+  1011f8:   83 e1 03                              andl $0x3,%ecx
+  1011fb:   f3 a4                                 rep andl $0x3,%ecx[cnt = 0]
+  1011fd:   8b 45 08                              movl 0x8(%ebp),%eax
+  101200:   8d 65 f4                              leal -0xc(%ebp),%esp
+  101203:   5b                                    popl %ebx
+  101204:   5f                                    popl %edi
+  101205:   5e                                    popl %esi
+  101206:   c9                                    leave
+  101207:   c3                                    ret
+  1010fc:   83 c4 10                              addl $0x10,%esp
+  1010ff:   81 bd f8 ef ff ff de c0 ad 0b         cmpl $0xbadc0de,-0x1008(%ebp)
+  101109:   74 06                                 jeb $0x6
+  10110b:   b8 01 00 00 00                        movl $0x1,%eax
+  101110:   d6                                    nemu trap (eax = 1)
