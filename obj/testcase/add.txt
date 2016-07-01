@@ -1,0 +1,48 @@
+
+obj/testcase/add:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+080480a0 <main>:
+ 80480a0:	55                   	push   %ebp
+ 80480a1:	57                   	push   %edi
+ 80480a2:	31 ed                	xor    %ebp,%ebp
+ 80480a4:	56                   	push   %esi
+ 80480a5:	53                   	push   %ebx
+ 80480a6:	b8 01 00 00 00       	mov    $0x1,%eax
+ 80480ab:	90                   	nop
+ 80480ac:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+ 80480b0:	8b 3c ad 80 92 04 08 	mov    0x8049280(,%ebp,4),%edi
+ 80480b7:	8d 34 ed 00 00 00 00 	lea    0x0(,%ebp,8),%esi
+ 80480be:	31 d2                	xor    %edx,%edx
+ 80480c0:	8b 0c 95 80 92 04 08 	mov    0x8049280(,%edx,4),%ecx
+ 80480c7:	8d 1c 32             	lea    (%edx,%esi,1),%ebx
+ 80480ca:	01 f9                	add    %edi,%ecx
+ 80480cc:	39 0c 9d 80 91 04 08 	cmp    %ecx,0x8049180(,%ebx,4)
+ 80480d3:	74 01                	je     80480d6 <main+0x36>
+ 80480d5:	d6                   	(bad)  
+ 80480d6:	83 c2 01             	add    $0x1,%edx
+ 80480d9:	83 fa 08             	cmp    $0x8,%edx
+ 80480dc:	75 e2                	jne    80480c0 <main+0x20>
+ 80480de:	83 c5 01             	add    $0x1,%ebp
+ 80480e1:	83 fd 08             	cmp    $0x8,%ebp
+ 80480e4:	75 ca                	jne    80480b0 <main+0x10>
+ 80480e6:	31 c0                	xor    %eax,%eax
+ 80480e8:	d6                   	(bad)  
+ 80480e9:	5b                   	pop    %ebx
+ 80480ea:	5e                   	pop    %esi
+ 80480eb:	5f                   	pop    %edi
+ 80480ec:	5d                   	pop    %ebp
+ 80480ed:	c3                   	ret    
+
+080480ee <start>:
+ 80480ee:	bd 00 00 00 00       	mov    $0x0,%ebp
+ 80480f3:	bc 00 00 00 08       	mov    $0x8000000,%esp
+ 80480f8:	83 ec 10             	sub    $0x10,%esp
+ 80480fb:	e8 a0 ff ff ff       	call   80480a0 <main>
+
+08048100 <add>:
+ 8048100:	8b 44 24 08          	mov    0x8(%esp),%eax
+ 8048104:	03 44 24 04          	add    0x4(%esp),%eax
+ 8048108:	c3                   	ret    
