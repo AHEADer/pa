@@ -1,0 +1,73 @@
+
+obj/testcase/max:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00800000 <start>:
+  800000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  800005:	bc 00 00 00 08       	mov    $0x8000000,%esp
+  80000a:	83 ec 10             	sub    $0x10,%esp
+  80000d:	e8 21 00 00 00       	call   800033 <main>
+
+00800012 <max>:
+  800012:	55                   	push   %ebp
+  800013:	89 e5                	mov    %esp,%ebp
+  800015:	83 ec 10             	sub    $0x10,%esp
+  800018:	8b 45 08             	mov    0x8(%ebp),%eax
+  80001b:	3b 45 0c             	cmp    0xc(%ebp),%eax
+  80001e:	7e 08                	jle    800028 <max+0x16>
+  800020:	8b 45 08             	mov    0x8(%ebp),%eax
+  800023:	89 45 fc             	mov    %eax,-0x4(%ebp)
+  800026:	eb 06                	jmp    80002e <max+0x1c>
+  800028:	8b 45 0c             	mov    0xc(%ebp),%eax
+  80002b:	89 45 fc             	mov    %eax,-0x4(%ebp)
+  80002e:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  800031:	c9                   	leave  
+  800032:	c3                   	ret    
+
+00800033 <main>:
+  800033:	55                   	push   %ebp
+  800034:	89 e5                	mov    %esp,%ebp
+  800036:	83 ec 10             	sub    $0x10,%esp
+  800039:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%ebp)
+  800040:	c7 45 f0 00 00 00 00 	movl   $0x0,-0x10(%ebp)
+  800047:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%ebp)
+  80004e:	eb 57                	jmp    8000a7 <main+0x74>
+  800050:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%ebp)
+  800057:	eb 42                	jmp    80009b <main+0x68>
+  800059:	8b 45 f8             	mov    -0x8(%ebp),%eax
+  80005c:	8b 14 85 40 11 80 00 	mov    0x801140(,%eax,4),%edx
+  800063:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  800066:	8b 04 85 40 11 80 00 	mov    0x801140(,%eax,4),%eax
+  80006d:	52                   	push   %edx
+  80006e:	50                   	push   %eax
+  80006f:	e8 9e ff ff ff       	call   800012 <max>
+  800074:	83 c4 08             	add    $0x8,%esp
+  800077:	89 c1                	mov    %eax,%ecx
+  800079:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  80007c:	8d 50 01             	lea    0x1(%eax),%edx
+  80007f:	89 55 f4             	mov    %edx,-0xc(%ebp)
+  800082:	8b 04 85 80 11 80 00 	mov    0x801180(,%eax,4),%eax
+  800089:	39 c1                	cmp    %eax,%ecx
+  80008b:	74 06                	je     800093 <main+0x60>
+  80008d:	b8 01 00 00 00       	mov    $0x1,%eax
+  800092:	d6                   	(bad)  
+  800093:	83 45 f0 01          	addl   $0x1,-0x10(%ebp)
+  800097:	83 45 f8 01          	addl   $0x1,-0x8(%ebp)
+  80009b:	8b 45 f8             	mov    -0x8(%ebp),%eax
+  80009e:	83 f8 07             	cmp    $0x7,%eax
+  8000a1:	76 b6                	jbe    800059 <main+0x26>
+  8000a3:	83 45 fc 01          	addl   $0x1,-0x4(%ebp)
+  8000a7:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  8000aa:	83 f8 07             	cmp    $0x7,%eax
+  8000ad:	76 a1                	jbe    800050 <main+0x1d>
+  8000af:	83 7d f0 40          	cmpl   $0x40,-0x10(%ebp)
+  8000b3:	74 06                	je     8000bb <main+0x88>
+  8000b5:	b8 01 00 00 00       	mov    $0x1,%eax
+  8000ba:	d6                   	(bad)  
+  8000bb:	b8 00 00 00 00       	mov    $0x0,%eax
+  8000c0:	d6                   	(bad)  
+  8000c1:	b8 00 00 00 00       	mov    $0x0,%eax
+  8000c6:	c9                   	leave  
+  8000c7:	c3                   	ret    

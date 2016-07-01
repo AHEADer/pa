@@ -1,0 +1,25 @@
+
+obj/testcase/hello-inline-asm:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00800000 <start>:
+  800000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  800005:	bc 00 00 00 08       	mov    $0x8000000,%esp
+  80000a:	83 ec 10             	sub    $0x10,%esp
+  80000d:	e8 00 00 00 00       	call   800012 <main>
+
+00800012 <main>:
+  800012:	55                   	push   %ebp
+  800013:	89 e5                	mov    %esp,%ebp
+  800015:	b8 04 00 00 00       	mov    $0x4,%eax
+  80001a:	bb 01 00 00 00       	mov    $0x1,%ebx
+  80001f:	b9 38 00 80 00       	mov    $0x800038,%ecx
+  800024:	ba 0e 00 00 00       	mov    $0xe,%edx
+  800029:	cd 80                	int    $0x80
+  80002b:	b8 00 00 00 00       	mov    $0x0,%eax
+  800030:	d6                   	(bad)  
+  800031:	b8 00 00 00 00       	mov    $0x0,%eax
+  800036:	5d                   	pop    %ebp
+  800037:	c3                   	ret    

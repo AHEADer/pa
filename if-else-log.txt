@@ -1,0 +1,5 @@
+test.sh: line 9: /usr/bin/time: No such file or directory
+
+
+===== the original log.txt =====
+

@@ -1,0 +1,208 @@
+
+obj/testcase/bit:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00800000 <start>:
+  800000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  800005:	bc 00 00 00 08       	mov    $0x8000000,%esp
+  80000a:	83 ec 10             	sub    $0x10,%esp
+  80000d:	e8 96 00 00 00       	call   8000a8 <main>
+
+00800012 <getbit>:
+  800012:	55                   	push   %ebp
+  800013:	89 e5                	mov    %esp,%ebp
+  800015:	83 ec 10             	sub    $0x10,%esp
+  800018:	8b 45 0c             	mov    0xc(%ebp),%eax
+  80001b:	c1 f8 03             	sar    $0x3,%eax
+  80001e:	89 45 fc             	mov    %eax,-0x4(%ebp)
+  800021:	83 65 0c 07          	andl   $0x7,0xc(%ebp)
+  800025:	8b 45 0c             	mov    0xc(%ebp),%eax
+  800028:	ba 01 00 00 00       	mov    $0x1,%edx
+  80002d:	89 c1                	mov    %eax,%ecx
+  80002f:	d3 e2                	shl    %cl,%edx
+  800031:	89 d0                	mov    %edx,%eax
+  800033:	88 45 fb             	mov    %al,-0x5(%ebp)
+  800036:	8b 55 fc             	mov    -0x4(%ebp),%edx
+  800039:	8b 45 08             	mov    0x8(%ebp),%eax
+  80003c:	01 d0                	add    %edx,%eax
+  80003e:	0f b6 00             	movzbl (%eax),%eax
+  800041:	22 45 fb             	and    -0x5(%ebp),%al
+  800044:	84 c0                	test   %al,%al
+  800046:	0f 95 c0             	setne  %al
+  800049:	c9                   	leave  
+  80004a:	c3                   	ret    
+
+0080004b <setbit>:
+  80004b:	55                   	push   %ebp
+  80004c:	89 e5                	mov    %esp,%ebp
+  80004e:	83 ec 14             	sub    $0x14,%esp
+  800051:	8b 45 10             	mov    0x10(%ebp),%eax
+  800054:	88 45 ec             	mov    %al,-0x14(%ebp)
+  800057:	8b 45 0c             	mov    0xc(%ebp),%eax
+  80005a:	c1 f8 03             	sar    $0x3,%eax
+  80005d:	89 45 fc             	mov    %eax,-0x4(%ebp)
+  800060:	83 65 0c 07          	andl   $0x7,0xc(%ebp)
+  800064:	8b 45 0c             	mov    0xc(%ebp),%eax
+  800067:	ba 01 00 00 00       	mov    $0x1,%edx
+  80006c:	89 c1                	mov    %eax,%ecx
+  80006e:	d3 e2                	shl    %cl,%edx
+  800070:	89 d0                	mov    %edx,%eax
+  800072:	88 45 fb             	mov    %al,-0x5(%ebp)
+  800075:	8b 55 fc             	mov    -0x4(%ebp),%edx
+  800078:	8b 45 08             	mov    0x8(%ebp),%eax
+  80007b:	01 d0                	add    %edx,%eax
+  80007d:	89 45 f4             	mov    %eax,-0xc(%ebp)
+  800080:	8b 55 f4             	mov    -0xc(%ebp),%edx
+  800083:	80 7d ec 00          	cmpb   $0x0,-0x14(%ebp)
+  800087:	75 12                	jne    80009b <setbit+0x50>
+  800089:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  80008c:	0f b6 00             	movzbl (%eax),%eax
+  80008f:	89 c1                	mov    %eax,%ecx
+  800091:	0f b6 45 fb          	movzbl -0x5(%ebp),%eax
+  800095:	f7 d0                	not    %eax
+  800097:	21 c8                	and    %ecx,%eax
+  800099:	eb 09                	jmp    8000a4 <setbit+0x59>
+  80009b:	8b 45 f4             	mov    -0xc(%ebp),%eax
+  80009e:	0f b6 00             	movzbl (%eax),%eax
+  8000a1:	0a 45 fb             	or     -0x5(%ebp),%al
+  8000a4:	88 02                	mov    %al,(%edx)
+  8000a6:	c9                   	leave  
+  8000a7:	c3                   	ret    
+
+008000a8 <main>:
+  8000a8:	55                   	push   %ebp
+  8000a9:	89 e5                	mov    %esp,%ebp
+  8000ab:	83 ec 10             	sub    $0x10,%esp
+  8000ae:	c6 45 fe aa          	movb   $0xaa,-0x2(%ebp)
+  8000b2:	6a 00                	push   $0x0
+  8000b4:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  8000b7:	50                   	push   %eax
+  8000b8:	e8 55 ff ff ff       	call   800012 <getbit>
+  8000bd:	83 c4 08             	add    $0x8,%esp
+  8000c0:	84 c0                	test   %al,%al
+  8000c2:	74 06                	je     8000ca <main+0x22>
+  8000c4:	b8 01 00 00 00       	mov    $0x1,%eax
+  8000c9:	d6                   	(bad)  
+  8000ca:	6a 01                	push   $0x1
+  8000cc:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  8000cf:	50                   	push   %eax
+  8000d0:	e8 3d ff ff ff       	call   800012 <getbit>
+  8000d5:	83 c4 08             	add    $0x8,%esp
+  8000d8:	3c 01                	cmp    $0x1,%al
+  8000da:	74 06                	je     8000e2 <main+0x3a>
+  8000dc:	b8 01 00 00 00       	mov    $0x1,%eax
+  8000e1:	d6                   	(bad)  
+  8000e2:	6a 02                	push   $0x2
+  8000e4:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  8000e7:	50                   	push   %eax
+  8000e8:	e8 25 ff ff ff       	call   800012 <getbit>
+  8000ed:	83 c4 08             	add    $0x8,%esp
+  8000f0:	84 c0                	test   %al,%al
+  8000f2:	74 06                	je     8000fa <main+0x52>
+  8000f4:	b8 01 00 00 00       	mov    $0x1,%eax
+  8000f9:	d6                   	(bad)  
+  8000fa:	6a 03                	push   $0x3
+  8000fc:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  8000ff:	50                   	push   %eax
+  800100:	e8 0d ff ff ff       	call   800012 <getbit>
+  800105:	83 c4 08             	add    $0x8,%esp
+  800108:	3c 01                	cmp    $0x1,%al
+  80010a:	74 06                	je     800112 <main+0x6a>
+  80010c:	b8 01 00 00 00       	mov    $0x1,%eax
+  800111:	d6                   	(bad)  
+  800112:	6a 04                	push   $0x4
+  800114:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  800117:	50                   	push   %eax
+  800118:	e8 f5 fe ff ff       	call   800012 <getbit>
+  80011d:	83 c4 08             	add    $0x8,%esp
+  800120:	84 c0                	test   %al,%al
+  800122:	74 06                	je     80012a <main+0x82>
+  800124:	b8 01 00 00 00       	mov    $0x1,%eax
+  800129:	d6                   	(bad)  
+  80012a:	6a 05                	push   $0x5
+  80012c:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  80012f:	50                   	push   %eax
+  800130:	e8 dd fe ff ff       	call   800012 <getbit>
+  800135:	83 c4 08             	add    $0x8,%esp
+  800138:	3c 01                	cmp    $0x1,%al
+  80013a:	74 06                	je     800142 <main+0x9a>
+  80013c:	b8 01 00 00 00       	mov    $0x1,%eax
+  800141:	d6                   	(bad)  
+  800142:	6a 06                	push   $0x6
+  800144:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  800147:	50                   	push   %eax
+  800148:	e8 c5 fe ff ff       	call   800012 <getbit>
+  80014d:	83 c4 08             	add    $0x8,%esp
+  800150:	84 c0                	test   %al,%al
+  800152:	74 06                	je     80015a <main+0xb2>
+  800154:	b8 01 00 00 00       	mov    $0x1,%eax
+  800159:	d6                   	(bad)  
+  80015a:	6a 07                	push   $0x7
+  80015c:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  80015f:	50                   	push   %eax
+  800160:	e8 ad fe ff ff       	call   800012 <getbit>
+  800165:	83 c4 08             	add    $0x8,%esp
+  800168:	3c 01                	cmp    $0x1,%al
+  80016a:	74 06                	je     800172 <main+0xca>
+  80016c:	b8 01 00 00 00       	mov    $0x1,%eax
+  800171:	d6                   	(bad)  
+  800172:	6a 01                	push   $0x1
+  800174:	6a 08                	push   $0x8
+  800176:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  800179:	50                   	push   %eax
+  80017a:	e8 cc fe ff ff       	call   80004b <setbit>
+  80017f:	83 c4 0c             	add    $0xc,%esp
+  800182:	6a 00                	push   $0x0
+  800184:	6a 09                	push   $0x9
+  800186:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  800189:	50                   	push   %eax
+  80018a:	e8 bc fe ff ff       	call   80004b <setbit>
+  80018f:	83 c4 0c             	add    $0xc,%esp
+  800192:	6a 01                	push   $0x1
+  800194:	6a 0a                	push   $0xa
+  800196:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  800199:	50                   	push   %eax
+  80019a:	e8 ac fe ff ff       	call   80004b <setbit>
+  80019f:	83 c4 0c             	add    $0xc,%esp
+  8001a2:	6a 00                	push   $0x0
+  8001a4:	6a 0b                	push   $0xb
+  8001a6:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  8001a9:	50                   	push   %eax
+  8001aa:	e8 9c fe ff ff       	call   80004b <setbit>
+  8001af:	83 c4 0c             	add    $0xc,%esp
+  8001b2:	6a 01                	push   $0x1
+  8001b4:	6a 0c                	push   $0xc
+  8001b6:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  8001b9:	50                   	push   %eax
+  8001ba:	e8 8c fe ff ff       	call   80004b <setbit>
+  8001bf:	83 c4 0c             	add    $0xc,%esp
+  8001c2:	6a 00                	push   $0x0
+  8001c4:	6a 0d                	push   $0xd
+  8001c6:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  8001c9:	50                   	push   %eax
+  8001ca:	e8 7c fe ff ff       	call   80004b <setbit>
+  8001cf:	83 c4 0c             	add    $0xc,%esp
+  8001d2:	6a 01                	push   $0x1
+  8001d4:	6a 0e                	push   $0xe
+  8001d6:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  8001d9:	50                   	push   %eax
+  8001da:	e8 6c fe ff ff       	call   80004b <setbit>
+  8001df:	83 c4 0c             	add    $0xc,%esp
+  8001e2:	6a 00                	push   $0x0
+  8001e4:	6a 0f                	push   $0xf
+  8001e6:	8d 45 fe             	lea    -0x2(%ebp),%eax
+  8001e9:	50                   	push   %eax
+  8001ea:	e8 5c fe ff ff       	call   80004b <setbit>
+  8001ef:	83 c4 0c             	add    $0xc,%esp
+  8001f2:	0f b6 45 ff          	movzbl -0x1(%ebp),%eax
+  8001f6:	3c 55                	cmp    $0x55,%al
+  8001f8:	74 06                	je     800200 <main+0x158>
+  8001fa:	b8 01 00 00 00       	mov    $0x1,%eax
+  8001ff:	d6                   	(bad)  
+  800200:	b8 00 00 00 00       	mov    $0x0,%eax
+  800205:	d6                   	(bad)  
+  800206:	b8 00 00 00 00       	mov    $0x0,%eax
+  80020b:	c9                   	leave  
+  80020c:	c3                   	ret    
