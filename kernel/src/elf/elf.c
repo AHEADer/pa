@@ -20,7 +20,7 @@ uint32_t get_ucr3();
 loader: load user program to assigned memory address
 */
 uint32_t loader() {
-	Elf32_Ehdr *elf;
+	Elf32_Ehdr *elf;	//the elf header
 	Elf32_Phdr *ph = NULL;
 
 	uint8_t buf[4096];
@@ -39,11 +39,15 @@ uint32_t loader() {
 	nemu_assert(*p_magic == elf_magic);
 
 	/* Load each program segment */
-	panic("please implement me");
-	for(; true; ) {
+	//panic("please implement me");
+	ph = (void *) ((char *)buf + elf->e_phoff);
+	int i;
+	for(i = 0;i < elf->e_phnum; i++) {
 		/* Scan the program header table, load each segment into memory */
 		if(ph->p_type == PT_LOAD) {
-
+			uint8_t *mem = (void *) mm_malloc(ph->p_vaddr, ph->p_memsz);
+            ramdisk_read(mem, ph->p_offset, ph->p_filesz);
+            memset(mem+ph->p_filesz, 0, ph->p_memsz-ph->p_filesz);
 			/* TODO: read the content of the segment from the ELF file 
 			 * to the memory region [VirtAddr, VirtAddr + FileSiz)
 			 */
@@ -61,6 +65,7 @@ uint32_t loader() {
 			if(brk < new_brk) { brk = new_brk; }
 #endif
 		}
+		ph++;
 	}
 
 	volatile uint32_t entry = elf->e_entry;
