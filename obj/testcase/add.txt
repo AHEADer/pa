@@ -1,0 +1,49 @@
+
+obj/testcase/add:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+080480a0 <main>:
+ 80480a0:	57                   	push   %edi
+ 80480a1:	56                   	push   %esi
+ 80480a2:	31 ff                	xor    %edi,%edi
+ 80480a4:	53                   	push   %ebx
+ 80480a5:	b8 01 00 00 00       	mov    $0x1,%eax
+ 80480aa:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+ 80480b0:	8b b7 80 92 04 08    	mov    0x8049280(%edi),%esi
+ 80480b6:	8d 1c 3f             	lea    (%edi,%edi,1),%ebx
+ 80480b9:	31 d2                	xor    %edx,%edx
+ 80480bb:	90                   	nop
+ 80480bc:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+ 80480c0:	8b 8a 80 92 04 08    	mov    0x8049280(%edx),%ecx
+ 80480c6:	01 f1                	add    %esi,%ecx
+ 80480c8:	3b 8c 9a 80 91 04 08 	cmp    0x8049180(%edx,%ebx,4),%ecx
+ 80480cf:	74 01                	je     80480d2 <main+0x32>
+ 80480d1:	d6                   	(bad)  
+ 80480d2:	83 c2 04             	add    $0x4,%edx
+ 80480d5:	83 fa 20             	cmp    $0x20,%edx
+ 80480d8:	75 e6                	jne    80480c0 <main+0x20>
+ 80480da:	83 c7 04             	add    $0x4,%edi
+ 80480dd:	83 ff 20             	cmp    $0x20,%edi
+ 80480e0:	75 ce                	jne    80480b0 <main+0x10>
+ 80480e2:	31 c0                	xor    %eax,%eax
+ 80480e4:	d6                   	(bad)  
+ 80480e5:	5b                   	pop    %ebx
+ 80480e6:	5e                   	pop    %esi
+ 80480e7:	5f                   	pop    %edi
+ 80480e8:	c3                   	ret    
+
+080480e9 <start>:
+ 80480e9:	bd 00 00 00 00       	mov    $0x0,%ebp
+ 80480ee:	bc 00 00 00 08       	mov    $0x8000000,%esp
+ 80480f3:	83 ec 10             	sub    $0x10,%esp
+ 80480f6:	e8 a5 ff ff ff       	call   80480a0 <main>
+ 80480fb:	66 90                	xchg   %ax,%ax
+ 80480fd:	66 90                	xchg   %ax,%ax
+ 80480ff:	90                   	nop
+
+08048100 <add>:
+ 8048100:	8b 44 24 08          	mov    0x8(%esp),%eax
+ 8048104:	03 44 24 04          	add    0x4(%esp),%eax
+ 8048108:	c3                   	ret    
