@@ -40,13 +40,13 @@ uint32_t loader() {
 	int i;
 	for(i=0;i < elf->e_phnum;i++) {
 		/* Scan the program header table, load each segment into memory */
-		if(ph->p_type == PT_LOAD) {		//ph is elf program header
+		if(ph->p_type == PT_LOAD) {		//ph is elf program header,p_type indicates segment kind
 			/* TODO: read the content of the segment from the ELF file 
 			 * to the memory region [VirtAddr, VirtAddr + FileSiz)
 			 */
 			uint8_t *mem = (void *) ph->p_vaddr;
-            ramdisk_read(mem, ph->p_offset, ph->p_filesz);
-            memset(mem+ph->p_filesz, 0, ph->p_memsz-ph->p_filesz); 
+            ramdisk_read(mem, ph->p_offset, ph->p_filesz);	//read filesz bytes of offset locaion to mem
+            memset(mem+ph->p_filesz, 0, ph->p_memsz-ph->p_filesz); //memset - fill memory with a constant byte
 			 
 			/* TODO: zero the memory region 
 			 * [VirtAddr + FileSiz, VirtAddr + MemSiz)
