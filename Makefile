@@ -2,7 +2,7 @@
 
 .PHONY: nemu entry all_testcase kernel run gdb test submit clean
 
-CC := gcc-4.9
+CC := gcc
 LD := ld
 CFLAGS := -MMD -Wall -Werror -c
 
