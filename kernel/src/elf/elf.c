@@ -40,7 +40,7 @@ uint32_t loader() {
 	int i;
 	for(i=0;i < elf->e_phnum;i++) {
 		/* Scan the program header table, load each segment into memory */
-		if(ph->p_type == PT_LOAD) {
+		if(ph->p_type == PT_LOAD) {		//ph is elf program header
 			/* TODO: read the content of the segment from the ELF file 
 			 * to the memory region [VirtAddr, VirtAddr + FileSiz)
 			 */
@@ -51,8 +51,6 @@ uint32_t loader() {
 			/* TODO: zero the memory region 
 			 * [VirtAddr + FileSiz, VirtAddr + MemSiz)
 			 */
-
-
 #ifdef IA32_PAGE
 			/* Record the program break for future use. */
 			extern uint32_t brk;

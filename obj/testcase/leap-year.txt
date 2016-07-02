@@ -1,0 +1,84 @@
+
+obj/testcase/leap-year:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00800094 <start>:
+  800094:	bd 00 00 00 00       	mov    $0x0,%ebp
+  800099:	bc 00 00 00 08       	mov    $0x8000000,%esp
+  80009e:	83 ec 10             	sub    $0x10,%esp
+  8000a1:	e8 64 00 00 00       	call   80010a <main>
+
+008000a6 <is_leap_year>:
+  8000a6:	55                   	push   %ebp
+  8000a7:	89 e5                	mov    %esp,%ebp
+  8000a9:	8b 45 08             	mov    0x8(%ebp),%eax
+  8000ac:	83 e0 03             	and    $0x3,%eax
+  8000af:	85 c0                	test   %eax,%eax
+  8000b1:	75 23                	jne    8000d6 <is_leap_year+0x30>
+  8000b3:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  8000b6:	ba 1f 85 eb 51       	mov    $0x51eb851f,%edx
+  8000bb:	89 c8                	mov    %ecx,%eax
+  8000bd:	f7 ea                	imul   %edx
+  8000bf:	c1 fa 05             	sar    $0x5,%edx
+  8000c2:	89 c8                	mov    %ecx,%eax
+  8000c4:	c1 f8 1f             	sar    $0x1f,%eax
+  8000c7:	29 c2                	sub    %eax,%edx
+  8000c9:	89 d0                	mov    %edx,%eax
+  8000cb:	6b c0 64             	imul   $0x64,%eax,%eax
+  8000ce:	29 c1                	sub    %eax,%ecx
+  8000d0:	89 c8                	mov    %ecx,%eax
+  8000d2:	85 c0                	test   %eax,%eax
+  8000d4:	75 26                	jne    8000fc <is_leap_year+0x56>
+  8000d6:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  8000d9:	ba 1f 85 eb 51       	mov    $0x51eb851f,%edx
+  8000de:	89 c8                	mov    %ecx,%eax
+  8000e0:	f7 ea                	imul   %edx
+  8000e2:	c1 fa 07             	sar    $0x7,%edx
+  8000e5:	89 c8                	mov    %ecx,%eax
+  8000e7:	c1 f8 1f             	sar    $0x1f,%eax
+  8000ea:	29 c2                	sub    %eax,%edx
+  8000ec:	89 d0                	mov    %edx,%eax
+  8000ee:	69 c0 90 01 00 00    	imul   $0x190,%eax,%eax
+  8000f4:	29 c1                	sub    %eax,%ecx
+  8000f6:	89 c8                	mov    %ecx,%eax
+  8000f8:	85 c0                	test   %eax,%eax
+  8000fa:	75 07                	jne    800103 <is_leap_year+0x5d>
+  8000fc:	b8 01 00 00 00       	mov    $0x1,%eax
+  800101:	eb 05                	jmp    800108 <is_leap_year+0x62>
+  800103:	b8 00 00 00 00       	mov    $0x0,%eax
+  800108:	5d                   	pop    %ebp
+  800109:	c3                   	ret    
+
+0080010a <main>:
+  80010a:	55                   	push   %ebp
+  80010b:	89 e5                	mov    %esp,%ebp
+  80010d:	83 ec 10             	sub    $0x10,%esp
+  800110:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%ebp)
+  800117:	eb 2b                	jmp    800144 <main+0x3a>
+  800119:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  80011c:	05 62 07 00 00       	add    $0x762,%eax
+  800121:	50                   	push   %eax
+  800122:	e8 7f ff ff ff       	call   8000a6 <is_leap_year>
+  800127:	83 c4 04             	add    $0x4,%esp
+  80012a:	89 c2                	mov    %eax,%edx
+  80012c:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  80012f:	8b 04 85 c0 11 80 00 	mov    0x8011c0(,%eax,4),%eax
+  800136:	39 c2                	cmp    %eax,%edx
+  800138:	74 06                	je     800140 <main+0x36>
+  80013a:	b8 01 00 00 00       	mov    $0x1,%eax
+  80013f:	d6                   	(bad)  
+  800140:	83 45 fc 01          	addl   $0x1,-0x4(%ebp)
+  800144:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  800147:	83 f8 7c             	cmp    $0x7c,%eax
+  80014a:	76 cd                	jbe    800119 <main+0xf>
+  80014c:	83 7d fc 7d          	cmpl   $0x7d,-0x4(%ebp)
+  800150:	74 06                	je     800158 <main+0x4e>
+  800152:	b8 01 00 00 00       	mov    $0x1,%eax
+  800157:	d6                   	(bad)  
+  800158:	b8 00 00 00 00       	mov    $0x0,%eax
+  80015d:	d6                   	(bad)  
+  80015e:	b8 00 00 00 00       	mov    $0x0,%eax
+  800163:	c9                   	leave  
+  800164:	c3                   	ret    

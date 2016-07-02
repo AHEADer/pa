@@ -1,0 +1,69 @@
+
+obj/testcase/mov-c:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00800094 <start>:
+  800094:	bd 00 00 00 00       	mov    $0x0,%ebp
+  800099:	bc 00 00 00 08       	mov    $0x8000000,%esp
+  80009e:	83 ec 10             	sub    $0x10,%esp
+  8000a1:	e8 00 00 00 00       	call   8000a6 <main>
+
+008000a6 <main>:
+  8000a6:	55                   	push   %ebp
+  8000a7:	89 e5                	mov    %esp,%ebp
+  8000a9:	c7 05 e0 11 80 00 00 	movl   $0x0,0x8011e0
+  8000b0:	00 00 00 
+  8000b3:	c7 05 e4 11 80 00 01 	movl   $0x1,0x8011e4
+  8000ba:	00 00 00 
+  8000bd:	c7 05 e8 11 80 00 02 	movl   $0x2,0x8011e8
+  8000c4:	00 00 00 
+  8000c7:	c7 05 ec 11 80 00 03 	movl   $0x3,0x8011ec
+  8000ce:	00 00 00 
+  8000d1:	c7 05 f0 11 80 00 04 	movl   $0x4,0x8011f0
+  8000d8:	00 00 00 
+  8000db:	a1 ec 11 80 00       	mov    0x8011ec,%eax
+  8000e0:	a3 c0 11 80 00       	mov    %eax,0x8011c0
+  8000e5:	a1 c0 11 80 00       	mov    0x8011c0,%eax
+  8000ea:	a3 f4 11 80 00       	mov    %eax,0x8011f4
+  8000ef:	a1 e0 11 80 00       	mov    0x8011e0,%eax
+  8000f4:	85 c0                	test   %eax,%eax
+  8000f6:	74 06                	je     8000fe <main+0x58>
+  8000f8:	b8 01 00 00 00       	mov    $0x1,%eax
+  8000fd:	d6                   	(bad)  
+  8000fe:	a1 e4 11 80 00       	mov    0x8011e4,%eax
+  800103:	83 f8 01             	cmp    $0x1,%eax
+  800106:	74 06                	je     80010e <main+0x68>
+  800108:	b8 01 00 00 00       	mov    $0x1,%eax
+  80010d:	d6                   	(bad)  
+  80010e:	a1 e8 11 80 00       	mov    0x8011e8,%eax
+  800113:	83 f8 02             	cmp    $0x2,%eax
+  800116:	74 06                	je     80011e <main+0x78>
+  800118:	b8 01 00 00 00       	mov    $0x1,%eax
+  80011d:	d6                   	(bad)  
+  80011e:	a1 ec 11 80 00       	mov    0x8011ec,%eax
+  800123:	83 f8 03             	cmp    $0x3,%eax
+  800126:	74 06                	je     80012e <main+0x88>
+  800128:	b8 01 00 00 00       	mov    $0x1,%eax
+  80012d:	d6                   	(bad)  
+  80012e:	a1 f0 11 80 00       	mov    0x8011f0,%eax
+  800133:	83 f8 04             	cmp    $0x4,%eax
+  800136:	74 06                	je     80013e <main+0x98>
+  800138:	b8 01 00 00 00       	mov    $0x1,%eax
+  80013d:	d6                   	(bad)  
+  80013e:	a1 c0 11 80 00       	mov    0x8011c0,%eax
+  800143:	83 f8 03             	cmp    $0x3,%eax
+  800146:	74 06                	je     80014e <main+0xa8>
+  800148:	b8 01 00 00 00       	mov    $0x1,%eax
+  80014d:	d6                   	(bad)  
+  80014e:	a1 f4 11 80 00       	mov    0x8011f4,%eax
+  800153:	83 f8 03             	cmp    $0x3,%eax
+  800156:	74 06                	je     80015e <main+0xb8>
+  800158:	b8 01 00 00 00       	mov    $0x1,%eax
+  80015d:	d6                   	(bad)  
+  80015e:	b8 00 00 00 00       	mov    $0x0,%eax
+  800163:	d6                   	(bad)  
+  800164:	b8 00 00 00 00       	mov    $0x0,%eax
+  800169:	5d                   	pop    %ebp
+  80016a:	c3                   	ret    

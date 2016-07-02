@@ -1,0 +1,60 @@
+
+obj/testcase/to-lower-case:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00800094 <start>:
+  800094:	bd 00 00 00 00       	mov    $0x0,%ebp
+  800099:	bc 00 00 00 08       	mov    $0x8000000,%esp
+  80009e:	83 ec 10             	sub    $0x10,%esp
+  8000a1:	e8 27 00 00 00       	call   8000cd <main>
+
+008000a6 <to_lower_case>:
+  8000a6:	55                   	push   %ebp
+  8000a7:	89 e5                	mov    %esp,%ebp
+  8000a9:	83 ec 04             	sub    $0x4,%esp
+  8000ac:	8b 45 08             	mov    0x8(%ebp),%eax
+  8000af:	88 45 fc             	mov    %al,-0x4(%ebp)
+  8000b2:	80 7d fc 40          	cmpb   $0x40,-0x4(%ebp)
+  8000b6:	7e 0f                	jle    8000c7 <to_lower_case+0x21>
+  8000b8:	80 7d fc 5a          	cmpb   $0x5a,-0x4(%ebp)
+  8000bc:	7f 09                	jg     8000c7 <to_lower_case+0x21>
+  8000be:	0f b6 45 fc          	movzbl -0x4(%ebp),%eax
+  8000c2:	83 c0 20             	add    $0x20,%eax
+  8000c5:	eb 04                	jmp    8000cb <to_lower_case+0x25>
+  8000c7:	0f b6 45 fc          	movzbl -0x4(%ebp),%eax
+  8000cb:	c9                   	leave  
+  8000cc:	c3                   	ret    
+
+008000cd <main>:
+  8000cd:	55                   	push   %ebp
+  8000ce:	89 e5                	mov    %esp,%ebp
+  8000d0:	83 ec 10             	sub    $0x10,%esp
+  8000d3:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%ebp)
+  8000da:	eb 2a                	jmp    800106 <main+0x39>
+  8000dc:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  8000df:	0f be c0             	movsbl %al,%eax
+  8000e2:	50                   	push   %eax
+  8000e3:	e8 be ff ff ff       	call   8000a6 <to_lower_case>
+  8000e8:	83 c4 04             	add    $0x4,%esp
+  8000eb:	89 c2                	mov    %eax,%edx
+  8000ed:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  8000f0:	05 80 11 80 00       	add    $0x801180,%eax
+  8000f5:	0f b6 00             	movzbl (%eax),%eax
+  8000f8:	38 c2                	cmp    %al,%dl
+  8000fa:	74 06                	je     800102 <main+0x35>
+  8000fc:	b8 01 00 00 00       	mov    $0x1,%eax
+  800101:	d6                   	(bad)  
+  800102:	83 45 fc 01          	addl   $0x1,-0x4(%ebp)
+  800106:	83 7d fc 7f          	cmpl   $0x7f,-0x4(%ebp)
+  80010a:	7e d0                	jle    8000dc <main+0xf>
+  80010c:	81 7d fc 80 00 00 00 	cmpl   $0x80,-0x4(%ebp)
+  800113:	74 06                	je     80011b <main+0x4e>
+  800115:	b8 01 00 00 00       	mov    $0x1,%eax
+  80011a:	d6                   	(bad)  
+  80011b:	b8 00 00 00 00       	mov    $0x0,%eax
+  800120:	d6                   	(bad)  
+  800121:	b8 00 00 00 00       	mov    $0x0,%eax
+  800126:	c9                   	leave  
+  800127:	c3                   	ret    

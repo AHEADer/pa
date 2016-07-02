@@ -1,0 +1,71 @@
+
+obj/testcase/switch:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00800094 <start>:
+  800094:	bd 00 00 00 00       	mov    $0x0,%ebp
+  800099:	bc 00 00 00 08       	mov    $0x8000000,%esp
+  80009e:	83 ec 10             	sub    $0x10,%esp
+  8000a1:	e8 5e 00 00 00       	call   800104 <main>
+
+008000a6 <switch_case>:
+  8000a6:	55                   	push   %ebp
+  8000a7:	89 e5                	mov    %esp,%ebp
+  8000a9:	83 ec 10             	sub    $0x10,%esp
+  8000ac:	83 7d 08 0c          	cmpl   $0xc,0x8(%ebp)
+  8000b0:	77 45                	ja     8000f7 <switch_case+0x51>
+  8000b2:	8b 45 08             	mov    0x8(%ebp),%eax
+  8000b5:	c1 e0 02             	shl    $0x2,%eax
+  8000b8:	05 5c 01 80 00       	add    $0x80015c,%eax
+  8000bd:	8b 00                	mov    (%eax),%eax
+  8000bf:	ff e0                	jmp    *%eax
+  8000c1:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%ebp)
+  8000c8:	eb 35                	jmp    8000ff <switch_case+0x59>
+  8000ca:	c7 45 fc 02 00 00 00 	movl   $0x2,-0x4(%ebp)
+  8000d1:	eb 2c                	jmp    8000ff <switch_case+0x59>
+  8000d3:	c7 45 fc 05 00 00 00 	movl   $0x5,-0x4(%ebp)
+  8000da:	eb 23                	jmp    8000ff <switch_case+0x59>
+  8000dc:	c7 45 fc 08 00 00 00 	movl   $0x8,-0x4(%ebp)
+  8000e3:	eb 1a                	jmp    8000ff <switch_case+0x59>
+  8000e5:	c7 45 fc 0a 00 00 00 	movl   $0xa,-0x4(%ebp)
+  8000ec:	eb 11                	jmp    8000ff <switch_case+0x59>
+  8000ee:	c7 45 fc 0f 00 00 00 	movl   $0xf,-0x4(%ebp)
+  8000f5:	eb 08                	jmp    8000ff <switch_case+0x59>
+  8000f7:	c7 45 fc ff ff ff ff 	movl   $0xffffffff,-0x4(%ebp)
+  8000fe:	90                   	nop
+  8000ff:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  800102:	c9                   	leave  
+  800103:	c3                   	ret    
+
+00800104 <main>:
+  800104:	55                   	push   %ebp
+  800105:	89 e5                	mov    %esp,%ebp
+  800107:	83 ec 10             	sub    $0x10,%esp
+  80010a:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%ebp)
+  800111:	eb 29                	jmp    80013c <main+0x38>
+  800113:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  800116:	83 e8 01             	sub    $0x1,%eax
+  800119:	50                   	push   %eax
+  80011a:	e8 87 ff ff ff       	call   8000a6 <switch_case>
+  80011f:	83 c4 04             	add    $0x4,%esp
+  800122:	89 c2                	mov    %eax,%edx
+  800124:	8b 45 fc             	mov    -0x4(%ebp),%eax
+  800127:	8b 04 85 00 12 80 00 	mov    0x801200(,%eax,4),%eax
+  80012e:	39 c2                	cmp    %eax,%edx
+  800130:	74 06                	je     800138 <main+0x34>
+  800132:	b8 01 00 00 00       	mov    $0x1,%eax
+  800137:	d6                   	(bad)  
+  800138:	83 45 fc 01          	addl   $0x1,-0x4(%ebp)
+  80013c:	83 7d fc 0e          	cmpl   $0xe,-0x4(%ebp)
+  800140:	7e d1                	jle    800113 <main+0xf>
+  800142:	83 7d fc 0f          	cmpl   $0xf,-0x4(%ebp)
+  800146:	74 06                	je     80014e <main+0x4a>
+  800148:	b8 01 00 00 00       	mov    $0x1,%eax
+  80014d:	d6                   	(bad)  
+  80014e:	b8 00 00 00 00       	mov    $0x0,%eax
+  800153:	d6                   	(bad)  
+  800154:	b8 00 00 00 00       	mov    $0x0,%eax
+  800159:	c9                   	leave  
+  80015a:	c3                   	ret    
