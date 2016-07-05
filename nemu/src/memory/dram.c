@@ -24,18 +24,18 @@ typedef union {
 } dram_addr;
 
 
-#define NR_COL (1 << COL_WIDTH)
-#define NR_ROW (1 << ROW_WIDTH)
-#define NR_BANK (1 << BANK_WIDTH)
-#define NR_RANK (1 << RANK_WIDTH)
+#define NR_COL (1 << COL_WIDTH)		//1024
+#define NR_ROW (1 << ROW_WIDTH)		//1024
+#define NR_BANK (1 << BANK_WIDTH)	//8
+#define NR_RANK (1 << RANK_WIDTH)	//16
 
 #define HW_MEM_SIZE (1 << (COL_WIDTH + ROW_WIDTH + BANK_WIDTH + RANK_WIDTH))
 
-uint8_t dram[NR_RANK][NR_BANK][NR_ROW][NR_COL];
+uint8_t dram[NR_RANK][NR_BANK][NR_ROW][NR_COL];	//actually "hardware address" is 2^27 bits
 uint8_t *hw_mem = (void *)dram;
 
 typedef struct {
-	uint8_t buf[NR_COL];
+	uint8_t buf[NR_COL];	//NR_COL is 2^10
 	int32_t row_idx;
 	bool valid;
 } RB;
@@ -63,7 +63,7 @@ static void ddr3_read(hwaddr_t addr, void *data) {
 
 	if(!(rowbufs[rank][bank].valid && rowbufs[rank][bank].row_idx == row) ) {
 		/* read a row into row buffer */
-		memcpy(rowbufs[rank][bank].buf, dram[rank][bank][row], NR_COL);
+		memcpy(rowbufs[rank][bank].buf, dram[rank][bank][row], NR_COL);		//NR_COL==1024
 		rowbufs[rank][bank].row_idx = row;
 		rowbufs[rank][bank].valid = true;
 	}
