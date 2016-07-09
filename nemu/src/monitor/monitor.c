@@ -10,6 +10,8 @@ void load_elf_tables(int, char *[]);
 void init_regex();
 void init_wp_list();
 void init_ddr3();
+void init_L1_cache();
+void init_L2_cache();
 
 FILE *log_fp = NULL;
 
@@ -79,7 +81,7 @@ void restart() {
 	/* Read the file with name `argv[1]' into ramdisk. */
 	init_ramdisk();
 #endif
-
+    
 	/* Read the entry code into memory. */
 	load_entry();
 	
@@ -91,4 +93,6 @@ void restart() {
 
 	/* Initialize DRAM. */
 	init_ddr3();
+    init_L1_cache();
+    init_L2_cache();
 }
